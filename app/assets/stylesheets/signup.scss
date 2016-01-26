@@ -1,0 +1,18 @@
+#main {
+  @include outer-container;
+
+  #signup-header {
+    font-size: 32px;
+    @include span-columns(12);
+  }
+
+  #signup-form {
+    @include span-columns(6);
+
+    button {
+      @include span-columns(6 of 6);
+      margin-top: 8px;
+      margin-left: 20px;
+    }
+  }
+}

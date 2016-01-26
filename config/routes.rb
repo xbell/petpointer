@@ -6,4 +6,6 @@ Rails.application.routes.draw do
 
   get "/map", to: "map#index"
 
+  get "/yelp", to: "yelp_test#yelp"
+
 end

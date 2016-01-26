@@ -1,4 +1,10 @@
 var map;
+
+
+
+
+
+
 $(function() {
 
   if (navigator === undefined) {
@@ -19,5 +25,15 @@ $(function() {
       zoom: 13
     });
   };
+
+    geocoder = new google.maps.Geocoder();
+    geocoder.geocode({'address': "New York City"}, function(results, status) {
+    var lat = results[0].geometry.location.lat();
+    var lng = results[0].geometry.location.lng();
+    // Do things with lat/lng here
+  });
+
+
+
 
 });

@@ -1,7 +1,15 @@
-<h1>Sign Up</h1>
-
-<div id="signup-container">
-  <form>
-    <button>Create Account</button>
-  </form>
+<div id="main">
+  <div id="top-row">
+    <div id="signup-header">
+      <h1>Sign Up</h1>
+    </div>
+    <form action="/users" method="POST" id="signup-form">
+      <input type="hidden"   name="authenticity_token" value="<%= form_authenticity_token %>"/>
+      <input type='text'     name="user[username]" placeholder="username">
+      <input type='text'     name="user[email]" placeholder="e-mail address">
+      <input type="password" name="user[password]" placeholder="Password">
+      <input type="password" name="user[password_confirmation]" placeholder="Confirm password">
+      <button type="submit" id="submit">Create Account</button>
+    </form>
+  </div>
 </div>

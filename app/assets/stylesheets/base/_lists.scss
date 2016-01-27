@@ -17,3 +17,10 @@ dl {
     margin: 0;
   }
 }
+
+@mixin search-result {
+  border: 1px solid gray;
+  font-size: 18px;
+  height: 100px;
+  margin: 10px;
+}

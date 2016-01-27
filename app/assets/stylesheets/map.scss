@@ -1,10 +1,58 @@
-#map {
-  width: 600px;
-  height: 600px;
-}
+$nav-height: 27px;
+$search-panel-height: 87px;
+$search-panel-height: 50px;
 
-#search-panel{
+#search-panel {
   border:1px solid #ccc;
   background:#e5e5e5;
-  padding:10px;
+  height: $search-panel-height;
+
+  input {
+    float: left;
+    height: 80%;
+    margin: 5px 0 2px 0;
+  }
+
+  #address, #search {
+    float: left;
+  }
+
+  #address {
+    @include span-columns(6);
+    @include shift(2);
+  }
+
+  #search {
+    @include span-columns(2);
+  }
+}
+
+.content-body {
+  height: calc(100vh - #{$nav-height} - #{$search-panel-height});
+
+  #map, #search-results-list {
+    height: 100%;
+    float: left;
+  }
+
+  #map {
+    @include span-columns(9);
+    margin-right: 35px;
+  }
+
+  #search-results-list {
+    @include span-columns(3);
+    padding: 20px 20px 20px 0;
+    overflow: scroll;
+
+    li:before {
+      content:"›";
+      color: red;
+      padding: 0px 2px;
+    }
+
+    li.search-result {
+      @include search-result;
+    }
+  }
 }

@@ -1,16 +1,22 @@
-  <h1>Sign In Page</h1>
+
+  <div id="main">
+    <div id="top-row">
+      <div id="signin-header">
+       <h1>Sign In</h1>
+      </div>
+        <%= form_for(:session, url:sign_in_path, id:"signin-form") do |f| %>
+          <% f.label :email %>
+          <%= f.email_field :email %>
+
+          <% f.label :password %>
+          <%= f.password_field :password %>
+
+          <%= f.submit "Sign In" %>
+        <% end %>
+      </div>
+    </div>
 
 
-  <%= form_for(:session, url:sign_in_path) do |f| %>
-    <%= f.label :email %>
-    <%= f.email_field :email %>
-
-    <%= f.label :password %>
-    <%= f.password_field :password %>
-
-    <%= f.submit "Sign In" %>
-
-  <% end %>
-
-
-New User? <%= link_to "Sign Up Today!", sign_up_path %>
+  <div class = "newuser">
+    New User? <%= link_to "Sign Up Today!", sign_up_path %>
+  </div>

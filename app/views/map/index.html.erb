@@ -1,12 +1,18 @@
 <div id="search-panel">
-  <input id="address" type="textbox" value="" placeholder = "Type Address Here!">
-  <input id="submit" type="button" value="Go!" >
+  <form action="/yelp/search" method="get" class="map-search" id="map-search">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+    <input id="address" type="text" name="address" value="" placeholder = "Type Address Here!">
+    <button id="search-button" type="submit">Go</button>
+  </form>
 </div>
 
 <div class="content-body">
   <div id="map">
   </div>
-  <ul id="search-results-list">
+  <ul class="search-results-list" id="search-results-list">
+    <div class="ajax-response" id="ajax-response">
+    </div>
+
     <li class="search-result">Result</li>
     <li class="search-result">Result</li>
     <li class="search-result">Result</li>

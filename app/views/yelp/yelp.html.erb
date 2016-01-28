@@ -1,0 +1,27 @@
+<h1>Yelp Results</h1>
+
+<div id="search-panel">
+  <form action="/yelp/search" method="get">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+    <input id="address" type="text" name="address" value="" placeholder = "Type Address Here!">
+    <select name="term">
+      <option value="veterinary">Veterinary</option>
+      <option value="park"      >Park</option>
+      <option value="pet store" >Pet Store</option>
+    </select>
+    <button type="submit">Go</button>
+  </form>
+</div>
+
+<ol>
+  <% if @response %>
+    <% @response.businesses.each do |business| %>
+      <li><%= business.name %>, <%= business.location.address %>, <%= business.rating %></li>
+    <% end %>
+  <% else %>
+    <% @results.each do |r| %>
+      <li><%=r["name"]%>: <%=r["location"]["address"]%> / Rating: <%=r["rating"]%></li>
+      <br>
+    <% end %>
+  <% end %>
+</ol>

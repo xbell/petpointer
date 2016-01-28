@@ -12,14 +12,8 @@ class YelpController < ApplicationController
     @address  = params[:address]
     @term     = params[:term]
     @response = Yelp.client.search(@address, { term: @term, limit: 20, sort: 1, radius_filter: 8046.72})
-    @json     = @response.to_json
-    # after this point it's no longer JSON
-
-    # this is a has:
-    @parsed   = JSON.parse(@json)
-    # and this is an array, which is iterated over on the view
-    @results  = @parsed["businesses"]
-    render :yelp
+    @response = @response.businesses.to_json
+    render json: @response
   end
 
 end

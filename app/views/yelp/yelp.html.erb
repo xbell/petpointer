@@ -14,8 +14,14 @@
 </div>
 
 <ol>
-  <% @results.each do |r| %>
-    <li><%=r["name"]%>: <%=r["location"]["address"]%> / Rating: <%=r["rating"]%></li>
-    <br>
+  <% if @response %>
+    <% @response.businesses.each do |business| %>
+      <li><%= business.name %>, <%= business.location.address %>, <%= business.rating %></li>
+    <% end %>
+  <% else %>
+    <% @results.each do |r| %>
+      <li><%=r["name"]%>: <%=r["location"]["address"]%> / Rating: <%=r["rating"]%></li>
+      <br>
+    <% end %>
   <% end %>
 </ol>

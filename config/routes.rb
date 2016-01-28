@@ -8,7 +8,7 @@ Rails.application.routes.draw do
   get '/sign-in', to: "sessions#new"
   post '/sign-in', to: "sessions#create"
 
-  get "/map", to: "map#index"
+  get "/map", to: "map#index", as: :map
 
   get  "/yelp"                , to: "yelp#yelp"
   get  "/yelp/search"         , to: "yelp#search"

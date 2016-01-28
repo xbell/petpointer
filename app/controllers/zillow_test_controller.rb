@@ -10,10 +10,6 @@ require "rubillow"
 
       @property_updated = Rubillow::PropertyDetails.updated_property_details({zpid: @propertyz})
 
-
-
-
-
     end
 
   end

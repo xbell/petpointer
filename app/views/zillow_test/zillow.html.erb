@@ -1,5 +1,11 @@
 <h1>Test Zillow</h1>
-  <%= @property_updated.inspect %>
+  <%= @property_updated %>
+
+
+
+    <% @property_comps.comparables.each do |comp| %>
+        <%= comp.inspect %>
+      <% end %>
 
 
   <ol>

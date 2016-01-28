@@ -1,7 +1,7 @@
 <h1>Yelp Results</h1>
 
 <div id="search-panel">
-  <form action="/yelp" method="post">
+  <form action="/yelp/search" method="get">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
     <input id="address" type="text" name="address" value="" placeholder = "Type Address Here!">
     <select name="term">

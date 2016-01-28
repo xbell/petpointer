@@ -18,8 +18,8 @@
       <a href="javascript:void(0)" id="js-navigation-centered-mobile-menu" class="navigation-centered-mobile-menu">Menu</a>
       <nav role="navigation">
         <ul id="js-navigation-centered-menu" class="navigation-centered-menu show">
-          <li class="nav-link"><a href="javascript:void(0)">About Us</a></li>
-          <li class="nav-link"><a href="javascript:void(0)">Search</a></li>
+          <li class="nav-link"><%= link_to "Home", root_path %></a></li>
+          <li class="nav-link"><%= link_to "Search", "/map" %></a></li>
           <li class="nav-link logo">
             <a href="/" class="logo">
               <img src="http://chatabout.com/assets/images/questions/2014/11/546aeb2beda8c.jpg" alt="Logo image">
@@ -33,7 +33,7 @@
     </div>
   </header>
 
-<%= yield %> 
+<%= yield %>
 
 <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDoW2NHGNseaYAfK7bdq29jbC-BGrXamAs" type="text/javascript"></script>
 

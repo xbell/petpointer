@@ -3,7 +3,6 @@ $search-panel-height: 87px;
 $search-panel-height: 50px;
 
 #ajax-response {
-  // border: 1px solid red;
   height: auto;
   width: auto;
 }
@@ -13,23 +12,25 @@ $search-panel-height: 50px;
   background:#e5e5e5;
   height: $search-panel-height;
 
-  input {
-    float: left;
-    height: 80%;
-    margin: 5px 0 2px 0;
-  }
+  #map-search {
+    @include outer-container;
 
-  #address, #search {
-    float: left;
-  }
+    #address, #search-button {
+      float: left;
+      margin: 5px 0 2px 0;
+    }
 
-  #address {
-    @include span-columns(6);
-    @include shift(2);
-  }
+    #address {
+      @include span-columns(8);
+      @include shift(1);
+      height: 80%;
+    }
 
-  #search {
-    @include span-columns(2);
+    #search-button {
+      @include span-columns(2);
+      text-align: center;
+      padding: 10px;
+    }
   }
 }
 

@@ -1,0 +1,15 @@
+<h1>Yelp Tester Page</h1>
+
+<div id="search-panel">
+  <form action="/yelp" method="post">
+    <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
+    <input id="address" type="text" name="address" value="" placeholder = "Type Address Here!">
+    <button type="submit">Go</button>
+  </form>
+</div>
+
+<ol>
+  <% @response.businesses.each do |business| %>
+    <li><%= business.name %>, <%= business.location.address %>, <%= business.rating %></li>
+  <% end %>
+</ol>

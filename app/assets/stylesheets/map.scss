@@ -2,6 +2,12 @@ $nav-height: 27px;
 $search-panel-height: 87px;
 $search-panel-height: 50px;
 
+#ajax-response {
+  // border: 1px solid red;
+  height: auto;
+  width: auto;
+}
+
 #search-panel {
   border:1px solid #ccc;
   background:#e5e5e5;

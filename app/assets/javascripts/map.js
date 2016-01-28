@@ -42,7 +42,8 @@ $(function() {
 
   var geocoder = new google.maps.Geocoder();
 
-  $("#submit").click(function(){
+  $("#map-search").submit(function(event){
+    event.preventDefault();
     var address = $("#address").val();
       // need address variable each time for the click function to work
       geocoder.geocode({'address': address }, function(results) {

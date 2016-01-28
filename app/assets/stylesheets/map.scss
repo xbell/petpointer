@@ -43,13 +43,13 @@ $search-panel-height: 50px;
   }
 
   #map {
-    @include span-columns(9);
+    width: 66vw;
     margin-right: 35px;
   }
 
   #search-results-list {
-    @include span-columns(3);
-    padding: 20px 20px 20px 0;
+    width: 29vw;
+    padding: 20px 10px 20px 0;
     overflow: scroll;
 
     li:before {
@@ -60,6 +60,7 @@ $search-panel-height: 50px;
 
     li.search-result {
       @include search-result;
+      margin: 0px 0px 10px 0px;
     }
   }
 }

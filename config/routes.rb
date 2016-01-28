@@ -10,7 +10,7 @@ Rails.application.routes.draw do
 
   get "/map", to: "map#index"
 
-  get  "/yelp"                , to: "yelp#yelp" , as: :yelp
+  get  "/yelp"                , to: "yelp#yelp"   , as: :yelp
   post "/yelp"                , to: "yelp#search"
 
 end

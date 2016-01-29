@@ -19,8 +19,10 @@ dl {
 }
 
 @mixin search-result {
-  border: 1px solid gray;
+  border-top: 1px solid gray;
   font-size: 18px;
-  height: 100px;
-  margin: 10px;
+  height: 70px;
+  margin: 0px;
+  padding-left:20px;
+  padding-top:10px; 
 }

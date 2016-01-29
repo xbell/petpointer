@@ -7,13 +7,11 @@ Rails.application.routes.draw do
 
   get '/sign-in'              , to: "sessions#new"
   post '/sign-in'             , to: "sessions#create"
-
-  get "/zillow"               , to: "zillow_test#zillow"
-
   get  '/sign-out'            , to: "sessions#sign_out", as: :sign_out
 
-  get "/map", to: "map#index" , as: :map
+  get "/map"                  , to: "map#index" , as: :map
 
   get  "/yelp"                , to: "yelp#yelp"
 
+  get "/zillow"               , to: "zillow#zillow"
 end

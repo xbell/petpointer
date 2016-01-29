@@ -5,8 +5,8 @@
     </div>
     <form action="/sign-in" method="POST" id="signin-form">
       <input type="hidden"   name="authenticity_token" value="<%= form_authenticity_token %>"/>
-      <input type='text'     name="user[email]" placeholder="E-mail Address">
-      <input type="password" name="user[password]" placeholder="Password">
+      <input type='text'     name="session[email]" placeholder="E-mail Address">
+      <input type="password" name="session[password]" placeholder="Password">
       <div id="signin-button">
         <button type="submit" id="submit">Sign In</button>
       </div>

@@ -1,3 +1,24 @@
 // Place all the styles related to the Sessions controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+
+#main {
+  @include outer-container;
+
+  #signin-header {
+    font-size: 32px;
+    @include span-columns(8);
+  }
+
+  #signin-form {
+    @include span-columns(6);
+
+    button {
+      @include span-columns(6 of 6);
+      margin-top: 8px;
+      margin-left: 20px;
+    }
+  }
+}

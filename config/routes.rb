@@ -15,5 +15,4 @@ Rails.application.routes.draw do
   get  "/yelp/search"         , to: "yelp#search"
 
   get "/zillow"               , to: "zillow#zillow"
-  get "/zillow/search"        , to: "zillow#search"
 end

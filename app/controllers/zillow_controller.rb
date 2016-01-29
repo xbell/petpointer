@@ -1,6 +1,9 @@
 require "rubillow"
 
-  class ZillowTestController < ApplicationController
+  class ZillowController < ApplicationController
+
+    def zillow
+    end
 
     def zillow
       @property = Rubillow::PropertyDetails.deep_search_results({ :address => '601 1st St NW', :citystatezip => 'moultrie,ga,31768' })

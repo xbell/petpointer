@@ -1,0 +1,52 @@
+<h1>Zillow API Data</h1>
+
+  <%= @property_updated %>
+
+  <% @property_comps.comparables.each do |n, comp| %>
+    <ul>
+      <li>
+        <%= comp.full_address %>
+      </li>
+      <li>
+        <%= comp.links %>
+      </li>
+    </ul>
+  <% end %>
+
+    <ol>
+      <li>
+        Lot Size Square Feet:
+        <%= @property.lot_size_square_feet   %>
+      </li>
+      <li>
+          Finished square Feet:
+        <%= @property.finished_square_feet %>
+      </li>
+
+      <li>
+        Property Links:
+          <%= @property.links %>
+      </li>
+      <li>
+        Property Bathrooms:
+        <%= @property.bathrooms %>
+      </li>
+
+      <li>
+        Property Bedrooms:
+        <%= @property.bedrooms %>
+      </li>
+
+      <li>
+        Property Full Address:
+        <%= @property.full_address %>
+      </li>
+      <li>
+        Property Region Type:
+        <%= @property.region_type %>
+      </li>
+      <li>
+        Property Use Code:
+        <%= @property.use_code %>
+      </li>
+  </ol>

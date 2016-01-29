@@ -1,22 +1,18 @@
-
-  <div id="main">
-    <div id="top-row">
-      <div id="signin-header">
-       <h1>Sign In</h1>
-      </div>
-        <%= form_for(:session, url:sign_in_path, id:"signin-form") do |f| %>
-          <% f.label :email %>
-          <%= f.email_field :email %>
-
-          <% f.label :password %>
-          <%= f.password_field :password %>
-
-          <%= f.submit "Sign In" %>
-        <% end %>
-      </div>
+<div id="main">
+  <div id="top-row sign-in">
+    <div id="signin-header">
+      <h1>Sign In</h1>
     </div>
-
-
-  <div class = "newuser">
-    New User? <%= link_to "Sign Up Today!", sign_up_path %>
+    <form action="/sign-in" method="POST" id="signin-form">
+      <input type="hidden"   name="authenticity_token" value="<%= form_authenticity_token %>"/>
+      <input type='text'     name="session[email]" placeholder="E-mail Address">
+      <input type="password" name="session[password]" placeholder="Password">
+      <div id="signin-button">
+        <button type="submit" id="submit">Sign In</button>
+      </div>
+    </form>
   </div>
+  <div id="new-user">
+    New user? <%= link_to "Sign up today!", sign_up_path %>
+  </div>
+</div>

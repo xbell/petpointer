@@ -1,18 +1,31 @@
 #main {
   @include outer-container;
 
-  #signup-header {
-    font-size: 32px;
+  #signup-header h1 {
     @include span-columns(12);
+    font-size: 32px;
+    text-align: center;
+    margin-top: 60px;
   }
 
   #signup-form {
     @include span-columns(6);
+    @include shift(3);
+    text-align: center;
 
-    button {
-      @include span-columns(6 of 6);
-      margin-top: 8px;
-      margin-left: 20px;
+    input {
+      margin-left: 0;
     }
+  }
+
+  #signup-button {
+    text-align: center;
+    margin-top: 20px;
+  }
+
+  #existing-user {
+    @include span-columns(12);
+    text-align: center;
+    margin-top: 30px;
   }
 }

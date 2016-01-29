@@ -1,10 +1,53 @@
 $nav-height: 27px;
+
+$search-panel-height: 87px;
 $search-panel-height: 50px;
 
 #ajax-response {
   height: auto;
   width: auto;
 }
+
+
+h1{
+  text-align:center;
+  font-size:25px;
+  padding-top:25px;
+  margin-bottom:0;
+}
+
+p{
+  text-align:center;
+  font-size:20px;
+  padding-bottom:5px;
+}
+
+.petpointlogo li{
+  display:inline-block;
+  padding-bottom:10px;
+}
+
+.petpointlogo li:first-child{
+  padding-left:150px;
+}
+
+.petpointlogo li:nth-child(2){
+  margin-top:35px;
+  padding-left:15px;
+}
+
+.search-results-list li:nth-child(2n +1){
+
+  background-color:#EDEDED;
+}
+
+ .petpointlogo li p{
+   font-size:20px;
+ }
+ .petpointlogo li p:nth-child(3){
+  font-size:45px;
+}
+
 
 #search-panel {
   border:1px solid #ccc;
@@ -33,33 +76,37 @@ $search-panel-height: 50px;
   }
 }
 
+
 .content-body {
   height: calc(100vh - #{$nav-height} - #{$search-panel-height});
 
-  #map, #search-results-list {
+  #map, #right-panel {
     height: 100%;
     float: left;
   }
 
   #map {
-    width: 66vw;
+    width: 42vw;
     margin-right: 35px;
   }
+}
 
-  #search-results-list {
-    width: 29vw;
-    padding: 20px 10px 20px 0;
-    overflow: scroll;
+#right-panel {
+overflow:scroll;
+width: 54.5vw;
+
+#search-results-list{
 
     li:before {
       content:"›";
-      color: red;
-      padding: 0px 2px;
-    }
+      // color: red;
 
+
+    }
     li.search-result {
       @include search-result;
-      margin: 0px 0px 10px 0px;
+
+
     }
-  }
+}
 }

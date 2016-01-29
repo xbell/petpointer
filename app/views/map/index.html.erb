@@ -1,7 +1,7 @@
 <div id="search-panel">
   <form action="/yelp/search" method="get" class="map-search" id="map-search">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
-    <input id="address" type="text" name="address" value="" placeholder = "Type Address Here!">
+    <input id="address" type="text" name="address" value="<%= params[:address] %>" placeholder = "Type Address Here!">
     <button id="search-button" type="submit">Go</button>
   </form>
 </div>

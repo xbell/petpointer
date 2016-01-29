@@ -12,7 +12,6 @@ Rails.application.routes.draw do
   get "/map"                  , to: "map#index" , as: :map
 
   get  "/yelp"                , to: "yelp#yelp"
-  get  "/yelp/search"         , to: "yelp#search"
 
   get "/zillow"               , to: "zillow#zillow"
 end

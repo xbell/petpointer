@@ -7,6 +7,7 @@ gem "rubillow"
 gem 'neat'
 gem 'bitters'
 gem 'rails', '4.2.5'
+gem "refills", group: :development
 # Use postgresql as the database for Active Record
 gem 'pg', '~> 0.15'
 # Use SCSS for stylesheets

@@ -1,5 +1,7 @@
-$nav-height: 27px;
 
+
+
+$nav-height: 27px;
 $search-panel-height: 87px;
 $search-panel-height: 50px;
 
@@ -7,6 +9,50 @@ $search-panel-height: 50px;
   height: auto;
   width: auto;
 }
+
+
+
+.petpointlogo section {
+  @include outer-container;
+aside {
+  @include span-columns(5);
+}
+article {
+  @include span-columns(7);
+  }
+}
+
+.petpointlogo section aside{
+  float:right;
+}
+.petpointlogo section p:nth-child(3){
+  font-size:45px;
+}
+
+
+.petpointlogo section p{
+  font-size:20px;
+
+}
+
+.petpointlogo section{
+    margin-top:35px;
+    padding-bottom:10px;
+    background-color:white;
+}
+
+
+.search-results-list section {
+  @include outer-container;
+aside {
+  @include span-columns(8);
+}
+article {
+  @include span-columns(4);
+  }
+}
+
+
 
 
 h1{
@@ -22,31 +68,20 @@ p{
   padding-bottom:5px;
 }
 
-.petpointlogo li{
-  display:inline-block;
-  padding-bottom:10px;
-}
 
 .petpointlogo li:first-child{
   padding-left:150px;
 }
 
-.petpointlogo li:nth-child(2){
-  margin-top:35px;
-  padding-left:15px;
-}
 
-.search-results-list li:nth-child(2n +1){
-
+section:nth-child(2n +1){
   background-color:#EDEDED;
 }
 
- .petpointlogo li p{
-   font-size:20px;
- }
- .petpointlogo li p:nth-child(3){
-  font-size:45px;
-}
+
+
+
+
 
 
 #search-panel {
@@ -93,20 +128,72 @@ p{
 
 #right-panel {
 overflow:scroll;
-width: 54.5vw;
+width: 48.5vw;
 
 #search-results-list{
 
-    li:before {
+    section {
       content:"›";
-      // color: red;
+      color: red;
 
 
     }
-    li.search-result {
+    section {
       @include search-result;
 
 
     }
+  }
 }
+
+
+
+
+.expander {
+  $base-font-size: 1em !default;
+  $base-line-height: 1.5em !default;
+  $base-spacing: 1.5em !default;
+  $action-color: #477DCA !default;
+  $dark-gray: #333 !default;
+  $light-gray: #DDD !default;
+  $base-font-color: $dark-gray !default;
+  $expander-arrow-width: 0.7em;
+  $expander-toggle-size: 1em;
+  $expander-toggle-arrow-size: $expander-toggle-size;
+  $expander-toggle-margin: 1em;
+
+  width: 60%;
+
+  .expander-trigger {
+    @include user-select(none);
+    color: $action-color;
+    cursor: pointer;
+    display: block;
+    font-size: $expander-toggle-size;
+    margin-bottom: $expander-toggle-size;
+    padding-bottom: $expander-toggle-size / 4;
+    text-decoration: none;
+
+    &:before {
+      font-size: $expander-arrow-width;
+      content: "\25BC";
+      margin-right: 0.5em;
+    }
+  }
+
+  .expander-content p {
+    color: $base-font-color;
+    line-height: $base-line-height;
+  }
+
+  .expander-hidden {
+    &:before {
+      font-size: $expander-arrow-width;
+      content: "\25BA";
+    }
+  }
+
+  .expander-hidden + .expander-content {
+    display: none;
+  }
 }

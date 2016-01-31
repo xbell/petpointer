@@ -1,6 +1,17 @@
+
+$(document).ready(function() {
+  $('.expander-trigger').click(function(){
+    $(this).toggleClass("expander-hidden");
+  });
+});
+
+
+
+
 var map;
 var marker;
 var markers = [];
+
 
 $(function() {
   if (navigator === undefined) {
@@ -37,6 +48,8 @@ $(function() {
       maxWidth: 400
     });
   };
+
+
 
   setMarker(lat, lng);
 

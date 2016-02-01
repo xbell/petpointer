@@ -1,85 +1,72 @@
-body{
-  background-color:white;
+html, body {
+  margin: 0px;
 }
 
-.banner{
-  text-align:center;
-  // width:100%;
-  height:500px;
-  margin:0px;
+body {
+  background-color: white;
+}
+
+.banner {
+  text-align: center;
+  height: 500px;
+  margin: 0px;
   background-image: url("/assets/dog.jpg")  ;
-  background-size:cover;
-  h1{
+  background-size: cover;
+
+  h1 {
     margin:auto 0;
-    padding-bottom:40px;
-    padding-top:90px;
-    color:white;
-    font-weight:900;
-    font-size:50px;
+    padding-bottom: 40px;
+    padding-top: 90px;
+    color: white;
+    font-weight: 900;
+    font-size: 50px;
   }
-  .fa.fa-search{
-    font-size:30px;
-    border:1px solid black;
-    padding:5px;
-    border-radius:5px;
-    margin:0px;
+
+  #map-search {
+    @include outer-container;
+    width: 560px;
+    margin: auto;
+    padding: 8px 0 8px 0;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.75);
+
+    #address, #search-button {
+      float: left;
+      margin: 5px 0 4px 0;
+    }
+
+    #address {
+      @include span-columns(8);
+      @include shift(1);
+      height: 80%;
+    }
+
+    #search-button {
+      @include span-columns(2);
+      text-align: center;
+      font-size: 18px;
+      padding: 8px;
+      margin-top: 6px;
+    }
   }
 }
 
-
-
-
-html, body{
-  margin:0px;
-}
-
-
-
-
-
-.info{
-  height:700px;
-
-  h2{
-    text-align:center;
-    margin-top:0px;
-    padding-top:50px;
-  }
-}
-
-.aboutme{
-  height:700px;
-  background-color:red;
-
-}
-
-
-
-input{
-  width:400px;
-  height:45px;
-  border-radius:10px;
-  margin:20px;
-  border:1px solid black;
-  // background-color:red;
-  font-size:20px;
-  text-align:center;
-}
-
-
-.input{
-  width:600px;
-  border:1px solid black;
-  margin:auto;
-  border-radius:10px;
-  opacity:0.4;
-  background-color: rgba(255,255,255,0.85);
-}
-
-
-.container{
+.container {
   @include outer-container;
-  .info{
+
+  .info {
   @include span-columns(6);
+  height:700px;
+
+    h2 {
+      text-align: center;
+      margin-top: 0px;
+      padding-top: 50px;
+    }
+  }
 }
+
+.aboutme {
+  height: 700px;
+  background-color: red;
 }

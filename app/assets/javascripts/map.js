@@ -3,6 +3,10 @@ var marker;
 var markers = [];
 
 $(function() {
+  $('.expander-trigger').click(function(){
+    $(this).toggleClass("expander-hidden");
+  });
+  // javascript for expander
   if (navigator === undefined) {
     initializeMap(-34.1, 150.6);
   } else {
@@ -40,6 +44,8 @@ $(function() {
       maxWidth: 400
     });
   };
+
+
 
   setMarker(lat, lng);
   // end logic for displaying map markers

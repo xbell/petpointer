@@ -6,12 +6,12 @@ Rails.application.routes.draw do
   post "/users"               , to: "users#create" , as: :create_user
   get  "/users/:user_id"      , to: "users#account", as: :account
 
-
   get '/sign-in'              , to: "sessions#new"
   post '/sign-in'             , to: "sessions#create"
   get  '/sign-out'            , to: "sessions#sign_out", as: :sign_out
 
-  get "/map"                  , to: "map#index" , as: :map
+  # get "/map/:address"         , to: "map#index"    , as: :favorite
+  get "/map"                  , to: "map#index"    , as: :map
 
   get  "/yelp"                , to: "yelp#yelp"
 

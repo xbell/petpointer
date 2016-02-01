@@ -13,7 +13,7 @@
       <h2>My Favorites</h2>
       <ul id="favorites-list">
         <% @user.favorites.each do |f| %>
-        <li> <%= f.address %></li>
+          <li> <%= link_to "#{f.address}", map_path(address: f.address), class:"favorite-link" %></li>
         <% end %>
       </ul>
     </div>

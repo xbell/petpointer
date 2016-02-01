@@ -1,17 +1,15 @@
 
+// javascript for expander
 $(document).ready(function() {
   $('.expander-trigger').click(function(){
     $(this).toggleClass("expander-hidden");
   });
 });
 
-
-
-
+// javascript for rest of page
 var map;
 var marker;
 var markers = [];
-
 
 $(function() {
   if (navigator === undefined) {

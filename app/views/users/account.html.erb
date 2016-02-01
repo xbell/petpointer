@@ -1,0 +1,21 @@
+<div id="main">
+  <h1 id="account-header">My Account</h1>
+  <div id="account-details-container">
+    <div class="row">
+      <h2>Account Settings</h2>
+      <ul id="account-settings">
+        <li><strong>username:</strong> <%= @user.username %></li>
+        <li><strong>member since:</strong> <%= @user.created_at.strftime("%B %d, %Y")%></li>
+        <li><strong>password settings:</strong> [PASSWORD CHANGE FORM PLACEHOLDER]</li>
+      </ul>
+    </div>
+    <div class="row">
+      <h2>My Favorites</h2>
+      <ul id="favorites-list">
+        <% @user.favorites.each do |f| %>
+          <li> <%= link_to "#{f.address}", map_path(address: f.address), class:"favorite-link" %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

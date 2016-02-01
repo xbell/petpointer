@@ -1,17 +1,12 @@
-
-// javascript for expander
-$(document).ready(function() {
-  $('.expander-trigger').click(function(){
-    $(this).toggleClass("expander-hidden");
-  });
-});
-
-// javascript for rest of page
 var map;
 var marker;
 var markers = [];
 
 $(function() {
+  $('.expander-trigger').click(function(){
+    $(this).toggleClass("expander-hidden");
+  });
+  // javascript for expander
   if (navigator === undefined) {
     initializeMap(-34.1, 150.6);
   } else {

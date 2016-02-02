@@ -26,15 +26,24 @@ class YelpController < ApplicationController
     @pet_services_score = yelp_score.services_score
     @total_pet_services_score = yelp_score.total_pet_services_score
     @park_distance = yelp_score.park_distance
+    @park_names = yelp_score.park_names
+    @vet_names = yelp_score.vet_names
+    @pet_services_names = yelp_score.services_names
+    @pet_stores_names = yelp_score.stores_names
 
 
     render json: { :total_score => @total_score,
                    :vets_score => @vets_score,
+                   :vet_names => @vet_names,
                    :parks_score => @parks_score,
-                   :pet_stores => @pet_stores_score,
-                   :pet_services => @pet_services_score,
+                   :park_distance => @park_distance,
+                   :park_names => @park_names,
                    :total_pet_services_score => @total_pet_services_score,
-                   :park_distance => @park_distance
+                   :pet_stores => @pet_stores_score,
+                   :pet_stores_names => @pet_stores_names,
+                   :pet_services => @pet_services_score,
+                   :pet_services_names => @pet_services_names
+
 
      }
 

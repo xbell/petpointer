@@ -24,13 +24,19 @@ class YelpScore
     # converted distance from miles to yards for all businesses
   end
 
+  def biz_name(score_key)
+    businesses(score_key).map {|b| b.name}
+  end
+
   def park_distance
     biz_distance(:parks).first
     # (first park in the list can list distance of all parks by)
     # biz_distance(:parks)
   end
 
-
+  def park_names
+    biz_name(:parks)
+  end
 
   def parks_score
     #  (total_score(:parks)/10)
@@ -47,8 +53,13 @@ class YelpScore
     end
   end
 
+  def vet_names
+    biz_name(:vets)
+  end
+
   def vet_score
   # vet score will be out of 20 total points
+  # edit based off distance
     if (total_score(:vets)/10) > 4.9
       vet_score = 20
     elsif (total_score(:vets)/10) > 3.9
@@ -62,7 +73,9 @@ class YelpScore
     end
   end
 
-
+  def services_names
+    biz_name(:services)
+  end
 
   def services_score
     if (total_score(:services)/10) > 4.9
@@ -76,6 +89,10 @@ class YelpScore
     elsif (total_score(:services)/10) > 0.9
       services_score = 2
     end
+  end
+
+  def stores_names
+    biz_name(:stores)
   end
 
   def stores_score
@@ -96,7 +113,6 @@ class YelpScore
     # stores score + the services score will be out of 20 total points
     services_score + stores_score
   end
-
 
   def businesses(score_key)
     @score_hash[score_key]

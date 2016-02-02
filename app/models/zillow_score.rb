@@ -4,10 +4,9 @@ class ZillowScore
     @score_hash = score_hash
   end
 
+  def feet_score
 
-
-
-
+  end
 
 
 end

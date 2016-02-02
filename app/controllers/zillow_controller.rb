@@ -20,7 +20,8 @@ class ZillowController < ApplicationController
       :lot_size_square_feet => @property.lot_size_square_feet,
     )
 
-    
+
+  @total_score = zillow_score.feet_score
 
     render json: zillow_score
   end

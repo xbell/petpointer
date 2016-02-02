@@ -6,6 +6,14 @@ body {
   background-color: white;
 }
 
+body * {
+  font-family: "Varela";
+}
+
+body h2, h3, h4, h5 {
+  font-family: "Fira Sans";
+}
+
 .banner {
   text-align: center;
   height: 500px;
@@ -14,12 +22,13 @@ body {
   background-size: cover;
 
   h1 {
+    font-family: "Merriweather";
     margin: 0 auto;
     color: white;
     font-weight: 900;
     font-size: 50px;
     padding: 140px 25px 40px 25px;
-    text-shadow: -2px 2px 0 #3a50d9;
+    text-shadow: -1.5px 2px 0 #3773f9;
   }
 
   #map-search {
@@ -61,7 +70,9 @@ body {
   h2 {
     font-size: 28px;
     text-align: center;
-    background-color: rgba(180, 180, 180, 0.4);
+    background-color: rgba(180, 180, 180, 0.2);
+    font-family: "Merriweather";
+    font-weight: 700;
   }
 
   h3 {
@@ -70,7 +81,6 @@ body {
     text-align: center;
     padding: 0px 15px;
   }
-
 
   #categories {
     .category {

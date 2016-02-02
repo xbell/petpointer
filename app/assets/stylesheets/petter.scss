@@ -1,6 +1,3 @@
-$mobile: new-breakpoint(max-width 480px);
-$desktop: new-breakpoint(min-width 850px);
-
 html, body {
   margin: 0px;
 }
@@ -74,46 +71,51 @@ body {
     padding: 0px 15px;
   }
 
-  .category {
-    float: left;
-    @include span-columns(3);
-    @include mobile-resize;
-    @include tablet-resize;
 
-    .cat-name {
-      font-size: 20px;
-      margin-bottom: 2px;
-    }
+  #categories {
+    .category {
+      float: left;
+      @include span-columns(3);
+      @include tablet-resize;
+      @include mobile-resize;
 
-    .cat-image {
-      height: 160px;
-      width: 100%;
-      background-color: rgb(131, 175, 207);
-    }
+      .cat-name {
+        font-size: 20px;
+        margin-bottom: 2px;
+      }
 
-    .cat-description {
-      font-size: 16px;
-    }
-  }
-}
+      .cat-image {
+        height: 160px;
+        width: 100%;
+        background-color: rgb(131, 175, 207);
+      }
 
-#examples {
-  margin-top: 20px;
-  @include outer-container;
-
-  .top-property {
-    float: left;
-    @include span-columns(2);
-    @include mobile-resize;
-
-    .top-property-image {
-      height: 100px;
-      width: 100%;
-      background-color: rgb(148, 203, 154);
-      margin-bottom: 20px;
+      .cat-description {
+        font-size: 16px;
+      }
     }
   }
 }
+
+  #examples {
+    .top-property {
+      float: left;
+      @include example-display;
+      @include tablet-resize;
+      @include mobile-resize;
+
+      .top-property-image {
+        height: 100px;
+        width: 100%;
+        background-color: rgb(148, 203, 154);
+        margin-bottom: 20px;
+
+        @media (max-width: 768px) {
+          height: 160px;
+        }
+      }
+    }
+  }
 
 #footer {
   background-color: black;

@@ -14,7 +14,19 @@ class YelpController < ApplicationController
         :stores   => @pet_stores.businesses,
         :parks    => @parks.businesses
       }
+
+
+
+
     render json: @response.to_json
   end
+
+
+
+
+
+
+
+
 
 end

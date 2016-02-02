@@ -12,4 +12,10 @@ class MapController < ApplicationController
     render nothing: true
   end
 
+  def delete_favorite
+    @favorite = Favorite.find_by(address: params[:address])
+    @favorite.destroy
+    render nothing: true
+  end
+
 end

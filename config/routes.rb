@@ -12,6 +12,7 @@ Rails.application.routes.draw do
 
   get "/map"               , to: "map#index"         , as: :map
   post "/map"              , to: "map#favorite"
+  delete "/map"            , to: "map#delete_favorite"
 
   get  "/yelp"             , to: "yelp#yelp"
 

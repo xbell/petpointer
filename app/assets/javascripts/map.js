@@ -5,13 +5,24 @@ var geocoder;
 
 $(function() {
 
-  $('#rating-input-1-1').on('change',function(){
+  $('#rating-input-1-1').on('change', function() {
+    if ($(this).is(':checked')) {
       // get current marker position
-    geocoder.geocode({"location": marker.position}, function(response) {
-      response[0].formatted_address;
-      // ajax request to my server to save address into database
-      $.post("/map", {address: response[0].formatted_address});
-    });
+      geocoder.geocode({"location": marker.position}, function(response) {
+        response[0].formatted_address;
+        // ajax request to my server to save address into database
+        $.post("/map", {address: response[0].formatted_address});
+      });
+    } else {
+      geocoder.geocode({"location": marker.position}, function(response) {
+        response[0].formatted_address;
+        $.ajax({
+          url: "/map",
+          type: "DELETE",
+          data: {address: response[0].formatted_address}
+        });
+      });
+    }
   });
 
   $('.expander-trigger').click(function(){

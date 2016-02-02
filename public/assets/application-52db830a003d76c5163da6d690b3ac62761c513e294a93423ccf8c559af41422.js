@@ -8793,7 +8793,7 @@ if ( !support.enctype ) {
 
 
 
-var rclass = /[\t\r\n\f]/g;
+var rclass=/[\t\r\n\f]/g;
 
 function getClass( elem ) {
 	return jQuery.attr( elem, "class" ) || "";

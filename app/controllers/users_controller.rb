@@ -14,6 +14,8 @@ class UsersController < ApplicationController
     end
   end
 
-
+  def account
+    @user = User.find(session[:user_id])
+  end
 
 end

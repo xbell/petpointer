@@ -1,87 +1,142 @@
 
+html, body {
+  margin: 0px;
+}
 
-// body{
-//   background-color:white;
-// }
 
-.banner{
-  text-align:center;
-  // width:100%;
-  height:500px;
-  margin:0px;
-  background-image: url("/assets/dog.jpg")  ;
-  background-size:cover;
-  h1{
-    margin:auto 0;
-    padding-bottom:40px;
-    padding-top:90px;
-    color:white;
-    font-weight:900;
-    font-size:50px;
+body {
+  background-color: white;
+}
+
+body * {
+  font-family: "Varela";
+}
+
+body h2, h3, h4, h5 {
+  font-family: "Fira Sans";
+}
+
+.banner {
+  text-align: center;
+  height: 500px;
+  margin: 0px;
+  background: url("/assets/dog.jpg") center center no-repeat;
+  background-size: cover;
+
+  h1 {
+    font-family: "Merriweather";
+    margin: 0 auto;
+    color: white;
+    font-weight: 900;
+    font-size: 50px;
+    padding: 140px 25px 40px 25px;
+    text-shadow: -1.5px 2px 0 #3773f9;
   }
-  .fa.fa-search{
-    font-size:30px;
-    border:1px solid black;
-    padding:5px;
-    border-radius:5px;
-    margin:0px;
+
+  #map-search {
+    @include outer-container;
+    @include mobile-resize;
+    width: 560px;
+    margin: auto;
+    padding: 8px 0 8px 0;
+    border-radius: 10px;
+    background-color: rgba(255,255,255,0.75);
+
+    #address, #search-button {
+      float: left;
+      margin: 5px 0 4px 0;
+    }
+
+    #address {
+      @include span-columns(8);
+      @include shift(1);
+      height: 80%;
+    }
+
+    #search-button {
+      @include span-columns(2);
+      text-align: center;
+      font-size: 18px;
+      padding: 8px;
+      margin-top: 6px;
+    }
   }
 }
 
-
-
-
-html, body{
-  margin:0px;
-}
-
-
-
-
-
-.info{
-  height:700px;
-
-  h2{
-    text-align:center;
-    margin-top:0px;
-    padding-top:50px;
-  }
-}
-
-.aboutme{
-  height:700px;
-  background-color:red;
-
-}
-
-
-
-input{
-  width:400px;
-  height:45px;
-  border-radius:10px;
-  margin:20px;
-  border:1px solid black;
-  // background-color:red;
-  font-size:20px;
-  text-align:center;
-}
-
-
-.input{
-  width:600px;
-  border:1px solid black;
-  margin:auto;
-  border-radius:10px;
-  opacity:0.4;
-  background-color: rgba(255,255,255,0.85);
-}
-
-
-.container{
+.body-container {
   @include outer-container;
-  .info{
-  @include span-columns(6);
+  margin-top: 20px;
+  margin-bottom: 20px;
+  padding: 0px 20px;
+
+  h2 {
+    font-size: 28px;
+    text-align: center;
+    background-color: rgba(180, 180, 180, 0.2);
+    font-family: "Merriweather";
+    font-weight: 700;
+  }
+
+  h3 {
+    font-size: 20px;
+    font-weight: 400;
+    text-align: center;
+    padding: 0px 15px;
+  }
+
+  #categories {
+    .category {
+      float: left;
+      @include span-columns(3);
+      @include tablet-resize;
+      @include mobile-resize;
+
+      .cat-name {
+        font-size: 20px;
+        margin-bottom: 2px;
+      }
+
+      .cat-image {
+        height: 160px;
+        width: 100%;
+        background-color: rgb(131, 175, 207);
+      }
+
+      .cat-description {
+        font-size: 16px;
+      }
+    }
+  }
 }
+
+  #examples {
+    .top-property {
+      float: left;
+      @include example-display;
+      @include tablet-resize;
+      @include mobile-resize;
+
+      .top-property-image {
+        height: 100px;
+        width: 100%;
+        background-color: rgb(148, 203, 154);
+        margin-bottom: 20px;
+
+        @media (max-width: 768px) {
+          height: 160px;
+        }
+      }
+    }
+  }
+
+#footer {
+  background-color: black;
+  height: 200px;
+
+  h2 {
+    color: white;
+    font-size: 24px;
+    text-align: center;
+    padding-top: 80px;
+  }
 }

@@ -15,18 +15,32 @@ class YelpScore
   end
 
   def total_score(score_key)
-    # expecting 10 businesses: 5 * 10 = 50???
+    # expecting 10 businesses
     businesses(score_key).map {|b| b.rating}.sum
   end
 
   def biz_distance(score_key)
-    businesses(score_key).map {|b| b.distance}
+    businesses(score_key).map {|b| (b.distance)/1760}
+    # converted distance from miles to yards
   end
 
   def park_distance
-    biz_distance(:vets)
+    biz_distance(:parks).first
+    # (first park in the list can list distance of all parks by)
+    # biz_distance(:parks)
   end
 
+
+  def parks_score
+    #  (total_score(:parks)/10)
+    if park_distance < 1
+      park_score = 20
+    elsif park_distance > 1
+      park_score = 16
+    end
+
+
+  end
 
   def vet_score
   # vet score will be out of 20 total points
@@ -43,9 +57,7 @@ class YelpScore
     end
   end
 
-  def parks_score
-   (total_score(:parks)/10)
-  end
+
 
   def services_score
     if (total_score(:services)/10) > 4.9

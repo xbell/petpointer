@@ -5,12 +5,6 @@ class ZillowScore
   end
 
 
-  def footage_score
-
-
-  end
-
-
 
 
 

@@ -1,0 +1,23 @@
+#main {
+  @include outer-container;
+
+  #account-header {
+    font-size: 42px;
+  }
+
+  #account-details-container {
+
+    .row {
+      padding-bottom: 30px;
+    }
+
+    h2 {
+      font-size: 28px;
+    }
+
+    #favorites-list li {
+      list-style-type: square;
+      margin-left: 20px;
+    }
+  }
+}

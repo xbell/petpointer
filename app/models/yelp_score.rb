@@ -10,9 +10,9 @@ class YelpScore
   end
 
   def overall_score
-    total_score(:vets) + total_pet_services_score + total_score(:parks)
+     total_pet_services_score + parks_score + vet_score
+     #WILL ADD ZILLOW DATA? to include the square footage and noise score
   end
-
 
   def total_score(score_key)
     # expecting 10 businesses: 5 * 10 = 50???
@@ -20,26 +20,58 @@ class YelpScore
   end
 
   def vet_score
-    total_score(:vets)/10
+  # vet score will be out of 20 total points
+    if (total_score(:vets)/10) > 4.9
+      vet_score = 20
+    elsif (total_score(:vets)/10) > 3.9
+      vet_score = 16
+    elsif (total_score(:vets)/10) > 2.9
+      vet_score = 12
+    elsif (total_score(:vets)/10) > 1.9
+      vet_score = 8
+    elsif (total_score(:vets)/10) > 0.9
+      vet_score = 4
+    end
   end
 
   def parks_score
-    total_score(:parks)/10
+   (total_score(:parks)/10)
   end
 
   def services_score
-    total_score(:services)/10
+    if (total_score(:services)/10) > 4.9
+      services_score = 10
+    elsif (total_score(:services)/10) > 3.9
+      services_score = 8
+    elsif (total_score(:services)/10) > 2.9
+      services_score = 6
+    elsif (total_score(:services)/10) > 1.9
+      services_score = 4
+    elsif (total_score(:services)/10) > 0.9
+      services_score = 2
+    end
   end
 
   def stores_score
-    total_score(:stores)/10
+    if total_score(:stores)/10 > 4.9
+      stores_score = 10
+    elsif total_score(:stores)/10 > 3.9
+      stores_score = 8
+    elsif total_score(:stores)/10 > 2.9
+       stores_score = 6
+    elsif total_score(:stores)/10 > 1.9
+      stores_score = 4
+    elsif total_score(:stores)/10 > 0.9
+      stores_score = 2
+    end
   end
 
   def total_pet_services_score
-    vet_score + services_score + stores_score
-
+    # stores score + the services score will be out of 20 total points
+    services_score + stores_score
   end
-  #
+
+
   def businesses(score_key)
     @score_hash[score_key]
   end

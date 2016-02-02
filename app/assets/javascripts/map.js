@@ -3,6 +3,13 @@ var marker;
 var markers = [];
 
 $(function() {
+
+  $(function(){
+    $('.checkbox').on('change',function(){
+      $('#form').submit();
+    });
+  });
+
   $('.expander-trigger').click(function(){
     $(this).toggleClass("expander-hidden");
   });

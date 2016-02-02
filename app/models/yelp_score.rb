@@ -19,6 +19,15 @@ class YelpScore
     businesses(score_key).map {|b| b.rating}.sum
   end
 
+  def biz_distance(score_key)
+    businesses(score_key).map {|b| b.distance}
+  end
+
+  def park_distance
+    biz_distance(:vets)
+  end
+
+
   def vet_score
   # vet score will be out of 20 total points
     if (total_score(:vets)/10) > 4.9

@@ -124,6 +124,7 @@ GEM
       thor (>= 0.18.1, < 2.0)
     rake (10.5.0)
     rdoc (4.2.1)
+    refills (0.1.0)
     rubillow (0.0.7)
       nokogiri (~> 1.5)
     sass (3.4.21)
@@ -181,6 +182,7 @@ DEPENDENCIES
   oauth
   pg (~> 0.15)
   rails (= 4.2.5)
+  refills
   rubillow
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)

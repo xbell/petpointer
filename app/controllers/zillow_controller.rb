@@ -11,12 +11,14 @@ class ZillowController < ApplicationController
     @property_comps = Rubillow::PropertyDetails.deep_comps({ :zpid => @propertyz , :count => 5 })
     @property_updated = Rubillow::PropertyDetails.updated_property_details({zpid: @propertyz})
     @response = {
-      :property => @property,
-      :comps    => @property_comps,
-      :updated  => @property_updated
+      # :property => @property,
+      # :comps    => @property_comps,
+      :updated  => @property_updated,
+      :finished_square_feet => @property.finished_square_feet,
+      :lot_size_square_feet => @property.lot_size_square_feet,
+      #number_of_floors => @property_updated.number_of_floors?
     }
 
-    
     render json: @response.to_json
   end
 

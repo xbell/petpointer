@@ -1,77 +1,5 @@
-
 $nav-height: 27px;
-$search-panel-height: 87px;
 $search-panel-height: 50px;
-
-#ajax-response {
-  height: auto;
-  width: auto;
-}
-
-.petpointlogo section {
-  @include outer-container;
-aside {
-  @include span-columns(5);
-}
-article {
-  @include span-columns(7);
-  }
-}
-
-.petpointlogo section aside{
-  float:right;
-
-}
-.petpointlogo section p:nth-child(3){
-  font-size:45px;
-}
-
-
-.petpointlogo section p{
-  font-size:20px;
-
-}
-
-.petpointlogo section{
-    margin-top:35px;
-    padding-bottom:10px;
-
-}
-
-
-.search-results-list section {
-  @include outer-container;
-aside {
-  @include span-columns(8);
-}
-article {
-  @include span-columns(4);
-  }
-}
-
-
-article p{
-  margin-bottom:0;
-}
-
-h1{
-  text-align:center;
-  font-size:25px;
-  padding-top:25px;
-  margin-bottom:0;
-}
-
-p{
-  text-align:center;
-  font-size:20px;
-  padding-bottom:5px;
-}
-
-
-section:nth-child(2n){
-  background-color:#EDEDED;
-}
-
 
 #search-panel {
   border:1px solid #ccc;
@@ -100,6 +28,18 @@ section:nth-child(2n){
   }
 }
 
+#ajax-response {
+  height: auto;
+  width: auto;
+}
+
+
+
+
+
+
+
+
 
 .content-body {
   height: calc(100vh - #{$nav-height} - #{$search-panel-height});
@@ -116,19 +56,88 @@ section:nth-child(2n){
 }
 
 #right-panel {
-overflow:scroll;
+overflow: scroll;
 width: 48.5vw;
 
-#search-results-list{
+  #petpointlogo section {
+    @include outer-container;
+    margin-top:35px;
+    padding-bottom:10px;
 
+    article, aside {
+      float: left;
+    }
+
+    article {
+      @include span-columns(9);
+
+      p, #total-score {
+        float: right;
+      }
+
+      p {
+        font-size: 20px;
+      }
+
+      #total-score {
+        font-size: 90px;
+        padding-left: 10px;
+      }
+    }
+
+    aside {
+      @include span-columns(3);
+    }
+  }
+
+
+
+  .search-results-list section {
+    @include outer-container;
+  aside {
+    @include span-columns(8);
+  }
+  article {
+    @include span-columns(4);
+    }
+  }
+
+
+  article p{
+    margin-bottom:0;
+  }
+
+  h1{
+    text-align:center;
+    font-size:25px;
+    padding-top:25px;
+    margin-bottom:0;
+  }
+
+  p{
+    text-align:center;
+    font-size:20px;
+    padding-bottom:5px;
+  }
+
+
+  section:nth-child(2n){
+    background-color:#EDEDED;
+  }
+
+
+
+
+
+
+  #search-results-list {
     section {
       content:"›";
 
     }
+
     section {
       @include search-result;
-
-
     }
   }
 }
@@ -184,12 +193,12 @@ width: 48.5vw;
 }
 
 
-  #zillow-disclaimer {
-    font-size: 12px;
-    padding-top: 10px;
+#zillow-disclaimer {
+  font-size: 12px;
+  padding-top: 10px;
 
-    span, a {
-      float: right;
-      padding-left: 5px;
-    }
+  span, a {
+    float: right;
+    padding-left: 5px;
   }
+}

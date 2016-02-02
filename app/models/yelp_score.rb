@@ -21,7 +21,7 @@ class YelpScore
 
   def biz_distance(score_key)
     businesses(score_key).map {|b| (b.distance)/1760}
-    # converted distance from miles to yards
+    # converted distance from miles to yards for all businesses
   end
 
   def park_distance
@@ -31,15 +31,20 @@ class YelpScore
   end
 
 
+
   def parks_score
     #  (total_score(:parks)/10)
-    if park_distance < 1
+    if park_distance < 0.26
       park_score = 20
     elsif park_distance > 1
-      park_score = 16
+      park_score = 15
+    elsif park_distance > 2
+      park_score = 10
+    elsif park_distance > 5
+      park_score = 5
+    else
+      park_score = 0
     end
-
-
   end
 
   def vet_score

@@ -4,7 +4,8 @@ var markers = [];
 var geocoder;
 
 $(function() {
-
+  // saves and deletes favorites but doesn't remember if address has been saved yet
+  // need to replace address with Zillow Id
   $('#rating-input-1-1').on('change', function() {
     if ($(this).is(':checked')) {
       // get current marker position

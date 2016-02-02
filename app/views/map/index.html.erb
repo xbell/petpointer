@@ -20,13 +20,10 @@
               <img src = "assets/petlogo.png" />
           </aside>
           <article>
-            <form id="form" method="post" action="">
-              <!-- <input type="checkbox" name="checkbox" class="checkbox"/>
-              <span>☆</span> -->
-              <span class="rating">
-                <input type="checkbox" class="rating-input" id="rating-input" name="rating-input">
-                <label for="rating-input" class="rating-star"></label>
-              </span>
+            <form id="rating" method="POST" action="/map" class="rating">
+              <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+              <input type="checkbox" class="rating-input" id="rating-input-1-1" name="rating-input-1"/>
+              <label for="rating-input-1-1" class="rating-star"></label>
             </form>
             <p>
               Toco Gives This Location

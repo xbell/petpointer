@@ -1,12 +1,16 @@
 var map;
 var marker;
 var markers = [];
+var geocoder;
 
 $(function() {
 
-  $(function(){
-    $('.checkbox').on('change',function(){
-      $('#form').submit();
+  $('#rating-input-1-1').on('change',function(){
+      // get current marker position
+    geocoder.geocode({"location": marker.position}, function(response) {
+      response[0].formatted_address;
+      // ajax request to my server to save address into database
+      $.post("/map", {address: response[0].formatted_address});
     });
   });
 
@@ -57,7 +61,7 @@ $(function() {
   setMarker(lat, lng);
   // end logic for displaying map markers
 
-  var geocoder = new google.maps.Geocoder();
+  geocoder = new google.maps.Geocoder();
 
   $("#map-search").submit(function(event){
     event.preventDefault();

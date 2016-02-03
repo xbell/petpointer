@@ -1,8 +1,31 @@
 var map;
 var marker;
 var markers = [];
+var geocoder;
 
 $(function() {
+  // saves and deletes favorites but doesn't remember if address has been saved yet
+  // need to replace address with Zillow Id
+  $('#rating-input-1-1').on('change', function() {
+    if ($(this).is(':checked')) {
+      // get current marker position
+      geocoder.geocode({"location": marker.position}, function(response) {
+        response[0].formatted_address;
+        // ajax request to my server to save address into database
+        $.post("/map", {address: response[0].formatted_address});
+      });
+    } else {
+      geocoder.geocode({"location": marker.position}, function(response) {
+        response[0].formatted_address;
+        $.ajax({
+          url: "/map",
+          type: "DELETE",
+          data: {address: response[0].formatted_address}
+        });
+      });
+    }
+  });
+
   $('.expander-trigger').click(function(){
     $(this).toggleClass("expander-hidden");
   });
@@ -50,7 +73,7 @@ $(function() {
   setMarker(lat, lng);
   // end logic for displaying map markers
 
-  var geocoder = new google.maps.Geocoder();
+  geocoder = new google.maps.Geocoder();
 
   $("#map-search").submit(function(event){
     event.preventDefault();

@@ -9,8 +9,6 @@
 <div class="content-body">
   <div id="map">
   </div>
-  <div class="ajax-response" id="ajax-response">
-  </div>
   <div id = "right-panel">
     <h1>PetPointer Score for [LOCATION ADDRESS]:</h1>
     <div id="petpointlogo">
@@ -26,6 +24,8 @@
     </div>
 
     <div class="search-results-list" id="search-results-list">
+      <div class="ajax-response" id="ajax-response">
+      </div>
       <section>
         <aside>
           <div class="expander">
@@ -44,8 +44,7 @@
           </div>
         </aside>
         <article>
-          <p>Parks Score</p>
-          <p>8</p>
+          <span id="sub-score">8</span><span>out of 20</span>
         </article>
       </section>
 
@@ -65,15 +64,14 @@
           </div>
         </aside>
         <article>
-          <p>Vets Score</p>
-          <p>6</p>
+          <span id="sub-score">7</span><span>out of 20</span>
         </article>
       </section>
 
       <section>
         <aside>
           <div class="expander">
-            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Pets Services(1st One)</a>
+            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Pet Services(1st One)</a>
             <div class="expander-content">
               <ul>
                <li>Grocery</li>
@@ -86,12 +84,7 @@
           </div>
         </aside>
         <article>
-          <p>
-            Pets Services Score
-          </p>
-          <p>
-            6
-          </p>
+          <span id="sub-score">6</span><span>out of 20</span>
         </article>
       </section>
 
@@ -112,15 +105,14 @@
           </div>
         </aside>
         <article>
-          <p>Property Square Footage Score</p>
-          <p>6</p>
+          <span id="sub-score">5</span><span>out of 20</span>
         </article>
       </section>
 
       <section>
         <aside>
           <div class="expander">
-            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Other</a>
+            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Noise</a>
             <div class="expander-content">
               <ul>
                <li>Grocery</li>
@@ -134,14 +126,10 @@
           </div>
         </aside>
         <article>
-          <p>Other</p>
-          <p>6</p>
+          <span id="sub-score">4</span><span>out of 20</span>
         </article>
-
       </section>
-
     </div>
-
 
     <div id="zillow-disclaimer">
       <a href="http://www.zillow.com/zestimate/">What's a Zestimate?</a>

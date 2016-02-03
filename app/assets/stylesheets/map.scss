@@ -160,13 +160,10 @@ width: 48.5vw;
       padding: 0px 15px 5px 0px;
 
       span {
-        @include span-columns(2 of 4);
-        @include shift(2);
+        float: right;
       }
 
-      span#sub-score {
-        @include span-columns(1 of 4);
-        @include shift(3);
+      .sub-score {
         font-size: 40px;
         font-weight: 700;
       }

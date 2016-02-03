@@ -1,5 +1,5 @@
 <div id="search-panel">
-  <form action="/yelp/search" method="get" class="map-search" id="map-search">
+  <form action="/yelp" method="get" class="map-search" id="map-search">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
     <input id="address" type="text" name="address" value="<%= params[:address] %>" placeholder = "Type Address Here!">
     <button id="search-button" type="submit">Go</button>
@@ -29,8 +29,6 @@
     </div>
 
     <div class="search-results-list" id="search-results-list">
-      <div class="ajax-response" id="ajax-response">
-      </div>
       <section>
         <aside>
           <div class="expander">
@@ -48,7 +46,8 @@
           </div>
         </aside>
         <article>
-          <span id="sub-score">8</span><span>out of 20</span>
+          <span class="sub-score" id="parks-score">8</span>
+          <span>out of 20</span>
         </article>
       </section>
 
@@ -69,7 +68,8 @@
           </div>
         </aside>
         <article>
-          <span id="sub-score">7</span><span>out of 20</span>
+          <span class="sub-score" id="vets-score">17</span>
+          <span>out of 20</span>
         </article>
       </section>
 
@@ -90,7 +90,8 @@
           </div>
         </aside>
         <article>
-          <span id="sub-score">6</span><span>out of 20</span>
+          <span class="sub-score" id="pet-services-score">6</span>
+          <span>out of 20</span>
         </article>
       </section>
 
@@ -111,7 +112,8 @@
           </div>
         </aside>
         <article>
-          <span id="sub-score">5</span><span>out of 20</span>
+          <span class="sub-score" id="sqft-score">5</span>
+          <span>out of 20</span>
         </article>
       </section>
 
@@ -132,7 +134,8 @@
           </div>
         </aside>
         <article>
-          <span id="sub-score">4</span><span>out of 20</span>
+          <span class="sub-score" id="noise-score">14</span>
+          <span>out of 20</span>
         </article>
       </section>
     </div>

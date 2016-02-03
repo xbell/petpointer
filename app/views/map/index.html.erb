@@ -12,6 +12,11 @@
    <div class="ajax-response" id="ajax-response">
    </div>
     <div id = "right-panel">
+      <form id="rating" method="POST" action="/map" class="rating">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+        <input type="checkbox" class="rating-input" id="rating-input-1-1" name="rating-input-1"/> <!-- checked="true" -->
+        <label for="rating-input-1-1" class="rating-star"></label>
+      </form>
       <h1>Your PetPointer Score!</h1>
       <div class = "petpointlogo">
         <section>
@@ -19,6 +24,7 @@
               <img src = "assets/petlogo.png" />
           </aside>
           <article>
+
             <p>
               Toco Gives This Location
             </p>

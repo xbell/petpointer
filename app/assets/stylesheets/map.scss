@@ -33,14 +33,6 @@ $search-panel-height: 50px;
   width: auto;
 }
 
-
-
-
-
-
-
-
-
 .content-body {
   height: calc(100vh - #{$nav-height} - #{$search-panel-height});
 
@@ -58,7 +50,6 @@ $search-panel-height: 50px;
 #right-panel {
 overflow: scroll;
 width: 48.5vw;
-
 
   h1 {
     text-align: center;
@@ -105,7 +96,6 @@ width: 48.5vw;
     }
   }
 
-
   #search-results-list section {
     @include outer-container;
     @include search-result;
@@ -117,6 +107,12 @@ width: 48.5vw;
     aside {
       @include span-columns(8);
       @include expander;
+
+      ul {
+        a#zillow-logo img {
+          padding: 10px 0;
+        }
+      }
     }
 
     article {

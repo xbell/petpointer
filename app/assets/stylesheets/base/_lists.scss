@@ -41,7 +41,7 @@ dl {
     $expander-toggle-arrow-size: $expander-toggle-size;
     $expander-toggle-margin: 1em;
 
-    width: 60%;
+    width: 100%;
 
     .expander-trigger {
       @include user-select(none);

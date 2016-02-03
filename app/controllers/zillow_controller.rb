@@ -23,15 +23,21 @@ class ZillowController < ApplicationController
       :property_address => @property.full_address
     )
 
-      @zillow_score = zillow_score.properties
-      @zillow_test = zillow_score.total_score
-      
+      @zillow_lot = zillow_score.lot_size
+      @zillow_interior = zillow_score.interior_square_feet
+      @zillow_score = zillow_score.total_score
+      @zillow_address = zillow_score.address
+      @zurls = zillow_score.zurls
+      @zpid = zillow_score.zpid
 
 
      render json: {
+                    :zillow_lot => @zillow_lot,
+                    :zillow_interior => @zillow_interior,
                     :zillow_score => @zillow_score,
-                    :zillow_test => @zillow_test
-
+                    :zillow_address => @zillow_address,
+                    :zurls => @zurls,
+                    :zpid => @zpid
 
      }
 

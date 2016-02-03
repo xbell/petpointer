@@ -12,8 +12,8 @@ class YelpController < ApplicationController
       # take total yelp score of all vets and create a pet score based off the yelp score
       # so for example a score of 4.5 would be a pet score of 25 out of overall score of 100
     yelp_score = YelpScore.new(
-    :vets     => @vets.businesses,
-    :services => @pet_services.businesses,
+      :vets     => @vets.businesses,
+      :services => @pet_services.businesses,
       :stores   => @pet_stores.businesses,
       :parks    => @parks.businesses,
     )
@@ -42,8 +42,6 @@ class YelpController < ApplicationController
                    :pet_stores_names => @pet_stores_names,
                    :pet_services => @pet_services_score,
                    :pet_services_names => @pet_services_names
-
-
      }
 
   end

@@ -51,6 +51,39 @@ $search-panel-height: 50px;
 overflow: scroll;
 width: 48.5vw;
 
+  .rating {
+    overflow: hidden;
+    display: inline-block;
+    font-size: 0;
+    position: relative;
+
+    .rating-input {
+      float: right;
+      width: 16px;
+      height: 16px;
+      padding: 0;
+      margin: 0 0 0 -16px;
+      opacity: 0;
+    }
+
+    .rating:hover .rating-star:hover,
+    .rating:hover .rating-star:hover ~ .rating-star,
+    .rating-input:checked ~ .rating-star {
+      background-position: 0 0;
+    }
+
+    .rating-star,
+    .rating:hover .rating-star {
+      position: relative;
+      float: left;
+      display: block;
+      width: 16px;
+      height: 16px;
+      margin-top: 32px;
+      background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 -16px;
+    }
+  }
+
   h1 {
     text-align: center;
     font-size: 25px;

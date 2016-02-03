@@ -11,6 +11,8 @@ Rails.application.routes.draw do
   get  '/sign-out'         , to: "sessions#sign_out" , as: :sign_out
 
   get "/map"               , to: "map#index"         , as: :map
+  post "/map"              , to: "map#favorite"
+  delete "/map"            , to: "map#delete_favorite"
 
   get  "/yelp"             , to: "yelp#yelp"
 

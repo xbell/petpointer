@@ -10,14 +10,22 @@ class ZillowController < ApplicationController
     @propertyz = @property.zpid
     @property_comps = Rubillow::PropertyDetails.deep_comps({ :zpid => @propertyz , :count => 5 })
     @property_updated = Rubillow::PropertyDetails.updated_property_details({zpid: @propertyz})
-    @response = {
-      :property => @property,
-      :comps    => @property_comps,
-      :updated  => @property_updated
+    #number_of_floors => @property_updated.number_of_floors?
+    # :property => @property,
+    # :comps    => @property_comps,
+    # :updated  => @property_updated,
+
+    zillow_score = ZillowScore.new(
+      :finished_square_feet => @property.finished_square_feet,
+      :lot_size_square_feet => @property.lot_size_square_feet,
+      :zillow_urls => @property.links,
+      :property_zpid => @propertyz
+    )
+
+     @finished_square_feet = zillow_score.total_score
+
+    render json: { :finished_square_feet => @finished_square_feet
+
     }
-
-    
-    render json: @response.to_json
   end
-
 end

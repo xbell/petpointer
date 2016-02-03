@@ -18,11 +18,14 @@ class ZillowController < ApplicationController
     zillow_score = ZillowScore.new(
       :finished_square_feet => @property.finished_square_feet,
       :lot_size_square_feet => @property.lot_size_square_feet,
+      :zillow_urls => @property.links,
+      :property_zpid => @propertyz
     )
 
+     @finished_square_feet = zillow_score.total_score
 
-  @total_score = zillow_score.feet_score
+    render json: { :finished_square_feet => @finished_square_feet
 
-    render json: zillow_score
+    }
   end
 end

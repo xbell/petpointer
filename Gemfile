@@ -5,6 +5,7 @@ gem 'bourbon'
 gem "rubillow"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'neat'
+gem 'geocoder'
 gem 'bitters'
 gem 'rails', '4.2.5'
 gem "refills", group: :development

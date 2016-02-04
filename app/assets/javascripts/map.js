@@ -3,7 +3,6 @@ var marker;
 var markers = [];
 var geocoder;
 
-
 $(function() {
   // saves and deletes favorites but doesn't remember if address has been saved yet
   // need to replace address with Zillow Id
@@ -31,6 +30,8 @@ $(function() {
     $(this).toggleClass("expander-hidden");
   });
   // javascript for expander
+
+
   if (navigator === undefined) {
     initializeMap(-34.1, 150.6);
   } else {
@@ -78,20 +79,78 @@ $(function() {
   $("#map-search").submit(function(event){
     event.preventDefault();
     var address = $("#address").val();
+    // str variable is used to dynamically search yelp based on address input; it is
+    // passed into the AJAX method below.
+    var str = ["/yelp/",address].join("");
 
       // need address variable each time for the click function to work
       geocoder.geocode({'address': address }, function(results) {
         var lat = results[0].geometry.location.lat();
         var lng = results[0].geometry.location.lng();
+
+
+        // CODE FOR ZIPCODE Variable this is breaking thw code
+        for(var i=0; i < results[0].address_components.length; i++)
+        {
+          var component = results[0].address_components[i];
+          if(component.types[0] == "postal_code")
+          {
+          console.log(component.long_name);
+          }
+        }
+        //
+        // Code For Street Variable
+        // for(var i=0; i < results[0].address_components.length; i++)
+        // {
+        //   var street= results[0].address_components[i];
+        //   if(street.types[0] == "street_address")
+        //   {
+        //   console.log(street.long_name);
+        //
+        //   }
+        // }
         // setCenter will move the map
         map.setCenter({lat: lat, lng: lng});
         // setMarker resets marker to new map location
         setMarker(lat, lng);
       });
 
-      // AJAX
-      $.get("/yelp", function(data) {
-        $("#ajax-response").html("My shizz ipsizzle pimpin' fizzle amet, shizzle my nizzle crocodizzle adipiscing elit. Nullam sapizzle velit, izzle volutpizzle, suscipit quizzle, gravida vel, dang. Pellentesque you son of a bizzle fo shizzle. Break yo neck, yall erizzle. Phat izzle dolor dapibizzle fo tempus fo shizzle. Maurizzle pellentesque nibh fo shizzle crunk. That's the shizzle izzle fo shizzle my nizzle. Pellentesque funky fresh crazy pot. In ass that's the shizzle platea dictumst. Donec sheezy. Fo shizzle mah nizzle fo rizzle, mah home g-dizzle bizzle urna, pretium the bizzle, ghetto ac, eleifend daahng dawg, nunc. Fo shizzle suscipit. Fo shizzle my nizzle mammasay mammasa mamma oo sa velit sizzle purus.");
+      // AJAX FOR YELP
+      $.get(str, function(response) {
+        // add scores for each yelp category:
+        $("#parks-score").html(response.parks_score);
+        $("#vets-score").html(response.vets_score);
+        $("#pet-services-score").html(response.total_pet_services_score);
+
+        // BEGIN list top property matches within each YELP category:
+        var parks = response.park_names
+        for (i = 0; i < parks.length; i++) {
+          $("#parks").append(
+            $('<li>').append(parks[i])
+          );
+        };
+
+        var vets = response.vet_names
+        for (i = 0; i < vets.length; i++) {
+          $("#vets").append(
+            $('<li>').append(vets[i])
+          );
+        };
+
+        var pet_services = response.pet_services_names
+        for (i = 0; i < pet_services.length; i++) {
+          $("#pet_services").append(
+            $('<li>').append(pet_services[i])
+          );
+        };
+        // END list top property matches within each YELP category:
+      });
+
+      // AJAX FOR ZILLOW – COMPLETE ON SEPARATE BRANCH
+      var zillowstr = ["/zillow/", address].join("");
+
+      $.get( zillowstr, function(response) {
+        console.log("test");
       });
     });
 

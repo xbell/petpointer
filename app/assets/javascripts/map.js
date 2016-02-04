@@ -89,9 +89,18 @@ $(function() {
 
       // AJAX FOR YELP
       $.get("/yelp", function(response) {
+        // add scores for each yelp category:
         $("#parks-score").html(response.parks_score);
         $("#vets-score").html(response.vets_score);
         $("#pet-services-score").html(response.total_pet_services_score);
+        // list top property matches within each category:
+
+        var parks = response.park_names
+        for (i = 0; i < parks.length; i++) {
+          $("#parks").append(
+            $('<li>').append(parks[i])
+          );
+        };
       });
 
       // AJAX FOR ZILLOW – COMPLETE ON SEPARATE BRANCH

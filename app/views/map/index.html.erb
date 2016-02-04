@@ -1,5 +1,5 @@
 <div id="search-panel">
-  <form action="/yelp" method="get" class="map-search" id="map-search">
+    <form action="<%= map_path %>" method="get" class="map-search" id="map-search">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
     <input id="address" type="text" name="address" value="<%= params[:address] %>" placeholder = "Type Address Here!">
     <button id="search-button" type="submit">Go</button>
@@ -68,7 +68,7 @@
         </aside>
         <article>
           <div class="score-container">
-            <span class="sub-score" id="vets-score">17</span>
+            <span class="sub-score" id="vets-score">9</span>
             <span>/20</span>
           </div>
         </article>
@@ -92,7 +92,7 @@
         </aside>
         <article>
           <div class="score-container">
-            <span class="sub-score" id="pet-services-score">6</span>
+            <span class="sub-score" id="pet-services-score">10</span>
             <span>/20</span>
           </div>
         </article>

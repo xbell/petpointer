@@ -1,5 +1,5 @@
 <div id="search-panel">
-  <form action="/yelp/search" method="get" class="map-search" id="map-search">
+    <form action="<%= map_path %>" method="get" class="map-search" id="map-search">
     <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>"/>
     <input id="address" type="text" name="address" value="<%= params[:address] %>" placeholder = "Type Address Here!">
     <button id="search-button" type="submit">Go</button>
@@ -29,68 +29,66 @@
     </div>
 
     <div class="search-results-list" id="search-results-list">
-      <div class="ajax-response" id="ajax-response">
-      </div>
       <section>
         <aside>
           <div class="expander">
-            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Parks(1st One)</a>
+            <a href="javascript:void(0)" class="expander-trigger expander-hidden" id="top-park">Parks</a>
             <div class="expander-content">
-              <ul>
-                <li>Grocery</li>
-                <li>Grocery</li>
-                <li>Grocery</li>
-                <li>
-                  <%= link_to image_tag("yelp_powered_btn_red_2x.png"), "http://yelp.com", id:"yelp-logo" %>
-                </li>
+              <ul id="parks">
               </ul>
+              <div>
+                <%= link_to image_tag("yelp_powered_btn_red_2x.png"), "http://yelp.com", id:"yelp-logo" %>
+              </div>
             </div>
           </div>
         </aside>
         <article>
-          <span id="sub-score">8</span><span>out of 20</span>
+          <div class="score-container">
+            <span class="sub-score" id="parks-score">8</span>
+            <span>/20</span>
+          </div>
         </article>
       </section>
 
       <section>
         <aside>
           <div class="expander">
-            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Vets(1st One)</a>
+            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Vets</a>
             <div class="expander-content">
-              <ul>
-               <li>Grocery</li>
-               <li>Grocery</li>
-               <li>Grocery</li>
-               <li>
-                 <%= link_to image_tag("yelp_powered_btn_red_2x.png"), "http://yelp.com", id:"yelp-logo" %>
-               </li>
+              <ul id="vets">
               </ul>
+              <div>
+                <%= link_to image_tag("yelp_powered_btn_red_2x.png"), "http://yelp.com", id:"yelp-logo" %>
+              </div>
             </div>
           </div>
         </aside>
         <article>
-          <span id="sub-score">7</span><span>out of 20</span>
+          <div class="score-container">
+            <span class="sub-score" id="vets-score">9</span>
+            <span>/20</span>
+          </div>
         </article>
       </section>
 
       <section>
         <aside>
           <div class="expander">
-            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Pet Services(1st One)</a>
+            <a href="javascript:void(0)" class="expander-trigger expander-hidden">Pet Services</a>
             <div class="expander-content">
-              <ul>
-               <li>Grocery</li>
-               <li>Grocery</li>
-               <li>Grocery</li>
-               <li>
-                 <%= link_to image_tag("yelp_powered_btn_red_2x.png"), "http://yelp.com", id:"yelp-logo" %>
-               </li>
+              <ul id="pet_services">
               </ul>
+              <div>
+                <%= link_to image_tag("yelp_powered_btn_red_2x.png"), "http://yelp.com", id:"yelp-logo" %>
+              </div>
             </div>
           </div>
         </aside>
         <article>
-          <span id="sub-score">6</span><span>out of 20</span>
+          <div class="score-container">
+            <span class="sub-score" id="pet-services-score">10</span>
+            <span>/20</span>
+          </div>
         </article>
       </section>
 
@@ -111,7 +109,10 @@
           </div>
         </aside>
         <article>
-          <span id="sub-score">5</span><span>out of 20</span>
+          <div class="score-container">
+            <span class="sub-score" id="sqft-score">5</span>
+            <span>/20</span>
+          </div>
         </article>
       </section>
 
@@ -121,9 +122,6 @@
             <a href="javascript:void(0)" class="expander-trigger expander-hidden">Noise</a>
             <div class="expander-content">
               <ul>
-               <li>Grocery</li>
-                <li>Grocery</li>
-                <li>Grocery</li>
                 <li>Grocery</li>
                 <li>Grocery</li>
                 <li>Grocery</li>
@@ -132,7 +130,10 @@
           </div>
         </aside>
         <article>
-          <span id="sub-score">4</span><span>out of 20</span>
+          <div class="score-container">
+            <span class="sub-score" id="noise-score">14</span>
+            <span>/20</span>
+          </div>
         </article>
       </section>
     </div>

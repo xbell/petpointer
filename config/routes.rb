@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root to: "petter#index"
 
   get  "/sign-up"              , to: "users#sign_up"       , as: :sign_up
@@ -16,7 +15,6 @@ Rails.application.routes.draw do
 
   get "/favorites/:zillow_id"  , to: "favorites#checked"
 
-  get  "/yelp/:address"        , to: "yelp#yelp"
   get  "/yelp"                 , to: "yelp#yelp"
 
   get "/zillow"                , to: "zillow#zillow"

@@ -3,6 +3,7 @@ var marker;
 var markers = [];
 var geocoder;
 
+
 $(function() {
   // saves and deletes favorites but doesn't remember if address has been saved yet
   // need to replace address with Zillow Id
@@ -10,7 +11,7 @@ $(function() {
     if ($(this).is(':checked')) {
       // get current marker position
       geocoder.geocode({"location": marker.position}, function(response) {
-        response[0].formatted_address;  
+        response[0].formatted_address;
         // ajax request to my server to save address into database
         $.post("/map", {address: response[0].formatted_address});
       });
@@ -68,12 +69,11 @@ $(function() {
     });
   };
 
-
-
   setMarker(lat, lng);
   // end logic for displaying map markers
 
   geocoder = new google.maps.Geocoder();
+  // #map-search
 
   $("#map-search").submit(function(event){
     event.preventDefault();

@@ -10,7 +10,7 @@ $(function() {
     if ($(this).is(':checked')) {
       // get current marker position
       geocoder.geocode({"location": marker.position}, function(response) {
-        response[0].formatted_address;  
+        response[0].formatted_address;
         // ajax request to my server to save address into database
         // $.post("/map", {zillow_id: response[0].formatted_address});
         $.post("/map", {zillow_id: "48712906"});
@@ -70,8 +70,6 @@ $(function() {
     });
   };
 
-
-
   setMarker(lat, lng);
   // end logic for displaying map markers
 
@@ -80,6 +78,9 @@ $(function() {
   $("#map-search").submit(function(event) {
     event.preventDefault();
     var address = $("#address").val();
+    // str variable is used to dynamically search yelp based on address input; it is
+    // passed into the AJAX method below.
+    var str = ["/yelp/",address].join("");
 
       // need address variable each time for the click function to work
       geocoder.geocode({'address': address }, function(results) {
@@ -91,14 +92,39 @@ $(function() {
         setMarker(lat, lng);
       });
 
-      // AJAX
-      $.get("/yelp", function(data) {
-        $("#ajax-response").html("My shizz ipsizzle pimpin' fizzle amet, shizzle my nizzle crocodizzle adipiscing elit. Nullam sapizzle velit, izzle volutpizzle, suscipit quizzle, gravida vel, dang. Pellentesque you son of a bizzle fo shizzle. Break yo neck, yall erizzle. Phat izzle dolor dapibizzle fo tempus fo shizzle. Maurizzle pellentesque nibh fo shizzle crunk. That's the shizzle izzle fo shizzle my nizzle. Pellentesque funky fresh crazy pot. In ass that's the shizzle platea dictumst. Donec sheezy. Fo shizzle mah nizzle fo rizzle, mah home g-dizzle bizzle urna, pretium the bizzle, ghetto ac, eleifend daahng dawg, nunc. Fo shizzle suscipit. Fo shizzle my nizzle mammasay mammasa mamma oo sa velit sizzle purus.");
+      // AJAX FOR YELP
+      $.get(str, function(response) {
+        // add scores for each yelp category:
+        $("#parks-score").html(response.parks_score);
+        $("#vets-score").html(response.vets_score);
+        $("#pet-services-score").html(response.total_pet_services_score);
+
+        // BEGIN list top property matches within each YELP category:
+        var parks = response.park_names
+        for (i = 0; i < parks.length; i++) {
+          $("#parks").append(
+            $('<li>').append(parks[i])
+          );
+        };
+
+        var vets = response.vet_names
+        for (i = 0; i < vets.length; i++) {
+          $("#vets").append(
+            $('<li>').append(vets[i])
+          );
+        };
+
+        var pet_services = response.pet_services_names
+        for (i = 0; i < pet_services.length; i++) {
+          $("#pet_services").append(
+            $('<li>').append(pet_services[i])
+          );
+        };
+        // END list top property matches within each YELP category:
       });
       // keeps star checked or not
       $.get("/favorites/48712906", function(data, status) {
-
-        console.log(status);
+        // console.log(status);
         // if 200 then true
         if(status === "success") {
           // alert("success");
@@ -111,6 +137,11 @@ $(function() {
           // $("#rating-input-1-1").html("unchecked");
         }
       });
+
+      // AJAX FOR ZILLOW – COMPLETE ON SEPARATE BRANCH
+      // $.get("/zillow", function(response) {
+      //   $("#sqft-score").html(response._______)
+      // });
     });
 
     // grab address from search bar on homepage

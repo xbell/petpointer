@@ -51,6 +51,12 @@ $search-panel-height: 50px;
 overflow: scroll;
 width: 48.5vw;
 
+  // REMOVE THIS ONCE ALL SCORES ARE DYNAMICALLY GENERATED
+  #total-score, #sqft-score, #noise-score {
+    color: orange;
+  }
+  // REMOVE THIS ONCE ALL SCORES ARE DYNAMICALLY GENERATED
+
   .rating {
     overflow: hidden;
     display: inline-block;
@@ -159,14 +165,11 @@ width: 48.5vw;
       @include span-columns(4);
       padding: 0px 15px 5px 0px;
 
-      span {
-        @include span-columns(2 of 4);
-        @include shift(2);
+      .score-container {
+        float: right;
       }
 
-      span#sub-score {
-        @include span-columns(1 of 4);
-        @include shift(3);
+      .sub-score {
         font-size: 40px;
         font-weight: 700;
       }

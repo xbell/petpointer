@@ -16,6 +16,7 @@ Rails.application.routes.draw do
 
   get "/favorites/:zillow_id"  , to: "favorites#checked"
 
+  get  "/yelp/:address"        , to: "yelp#yelp"
   get  "/yelp"                 , to: "yelp#yelp"
 
   get "/zillow"                , to: "zillow#zillow"

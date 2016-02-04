@@ -87,12 +87,17 @@ $(function() {
         setMarker(lat, lng);
       });
 
-      // AJAX
+      // AJAX FOR YELP
       $.get("/yelp", function(response) {
         $("#parks-score").html(response.parks_score);
         $("#vets-score").html(response.vets_score);
         $("#pet-services-score").html(response.total_pet_services_score);
       });
+
+      // AJAX FOR ZILLOW – COMPLETE ON SEPARATE BRANCH
+      // $.get("/zillow", function(response) {
+      //   $("#sqft-score").html(response._______)
+      // });
     });
 
     // grab address from search bar on homepage

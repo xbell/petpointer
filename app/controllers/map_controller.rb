@@ -18,4 +18,6 @@ class MapController < ApplicationController
     render nothing: true
   end
 
+  
+
 end

@@ -6,13 +6,14 @@ var geocoder;
 $(function() {
   // saves and deletes favorites but doesn't remember if address has been saved yet
   // need to replace address with Zillow Id
-  $('#rating-input-1-1').on('change', function() {
+  $("#rating-input-1-1").on("change", function() {
     if ($(this).is(':checked')) {
       // get current marker position
       geocoder.geocode({"location": marker.position}, function(response) {
         response[0].formatted_address;
         // ajax request to my server to save address into database
-        $.post("/map", {address: response[0].formatted_address});
+        // $.post("/map", {zillow_id: response[0].formatted_address});
+        $.post("/map", {zillow_id: "48712906"});
       });
     } else {
       geocoder.geocode({"location": marker.position}, function(response) {
@@ -20,13 +21,14 @@ $(function() {
         $.ajax({
           url: "/map",
           type: "DELETE",
-          data: {address: response[0].formatted_address}
+          // data: {zillow_id: response[0].formatted_address}
+          data: {zillow_id: "48712906"}
         });
       });
     }
   });
 
-  $('.expander-trigger').click(function(){
+  $('.expander-trigger').click(function() {
     $(this).toggleClass("expander-hidden");
   });
   // javascript for expander
@@ -76,7 +78,7 @@ $(function() {
   geocoder = new google.maps.Geocoder();
   // #map-search
 
-  $("#map-search").submit(function(event){
+  $("#map-search").submit(function(event) {
     event.preventDefault();
     var address = $("#address").val();
     // str variable is used to dynamically search yelp based on address input; it is
@@ -144,14 +146,38 @@ $(function() {
           );
         };
         // END list top property matches within each YELP category:
+
       });
 
       // AJAX FOR ZILLOW – COMPLETE ON SEPARATE BRANCH
       var zillowstr = ["/zillow/", address].join("");
 
       $.get( zillowstr, function(response) {
-        console.log("test");
+
       });
+      // keeps star checked or not
+      if ($("#rating-input-1-1").length) {
+        $.get("/favorites/48712906", function(data, status) {
+          // console.log(status);
+          // if 200 then true
+          if(status === "success") {
+            // alert("success");
+            $("#rating-input-1-1").prop("checked", true);
+            // $("#rating-input-1-1").html("checked");
+          // if 404 then false
+          } else {
+            // alert("fail");
+            $("#rating-input-1-1").prop("checked", false);
+            // $("#rating-input-1-1").html("unchecked");
+          }
+        });
+      }
+
+
+      // AJAX FOR ZILLOW – COMPLETE ON SEPARATE BRANCH
+      // $.get("/zillow", function(response) {
+      //   $("#sqft-score").html(response._______)
+      // });
     });
 
     // grab address from search bar on homepage

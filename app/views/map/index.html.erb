@@ -10,11 +10,13 @@
   <div id="map">
   </div>
   <div id = "right-panel">
-    <form id="rating" method="POST" action="/map" class="rating">
-      <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-      <input type="checkbox" class="rating-input" id="rating-input-1-1" name="rating-input-1"/> <!-- checked="true" -->
-      <label for="rating-input-1-1" class="rating-star"></label>
-    </form>
+    <% if session[:user_id] %>
+      <form id="rating" method="POST" action="/map" class="rating">
+        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+        <input type="checkbox" class="rating-input" id="rating-input-1-1" name="rating-input-1"/> <!-- checked="true" -->
+        <label for="rating-input-1-1" class="rating-star"></label>
+      </form>
+    <% end %>
     <h1>PetPointer Score for [LOCATION ADDRESS]:</h1>
     <div id="petpointlogo">
       <section>

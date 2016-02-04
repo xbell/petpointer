@@ -1,9 +1,10 @@
 class ZillowScore
   # Expected format:
-  # :vets     => @vets.businesses,
-  # :services => @pet_services.businesses,
-  # :stores   => @pet_stores.businesses,
-  # :parks    => @parks.businesses,
+  #:finished_square_feet => @property.finished_square_feet,
+  # :lot_size_square_feet => @property.lot_size_square_feet,
+  # :zillow_urls => @property.links,
+  # :property_zpid => @propertyz,
+  # :property_address => @property.full_address
 
   def initialize(score_hash)
     @score_hash = score_hash
@@ -11,21 +12,23 @@ class ZillowScore
 
   def total_score
     a = lot_size.to_i - interior_square_feet.to_i
-    if a > 8000
+    if a > 43000
       a = 20
+    elsif a > 8000
+      a = 16
     elsif a > 2000
-      a = 15
+      a = 14
     elsif a > 1400
       a = 10
     elsif a > 650
-      a = 5
+      a = 8
     elsif a > 150
-      a = 0
+      a = 4
     end
   end
 
   def lot_size
-    # @score_hash[:finished_square_feet]
+    # @score_hash[:finished_square_feet], call by symbol
     @score_hash[:lot_size_square_feet]
   end
 

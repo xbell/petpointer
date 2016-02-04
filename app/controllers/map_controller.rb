@@ -18,4 +18,6 @@ class MapController < ApplicationController
     render nothing: true, :status => "not found"
   end
 
+  
+
 end

@@ -42,11 +42,11 @@ class YelpScore
     #  (total_score(:parks)/10)
     if park_distance < 0.26
       park_score = 20
-    elsif park_distance > 1
+    elsif park_distance > 1 && park_distance < 1.9
       park_score = 15
-    elsif park_distance > 2
+    elsif park_distance > 2 && park_distance < 4.9
       park_score = 10
-    elsif park_distance > 5
+    elsif park_distance > 5 && park_distance < 30
       park_score = 5
     else
       park_score = 0
@@ -62,13 +62,13 @@ class YelpScore
   # edit based off distance
     if (total_score(:vets)/10) > 4.9
       vet_score = 20
-    elsif (total_score(:vets)/10) > 3.9
+    elsif (total_score(:vets)/10) > 3.9 && (total_score(:vets)/10) < 4.9
       vet_score = 16
-    elsif (total_score(:vets)/10) > 2.9
+    elsif (total_score(:vets)/10) > 2.9 && (total_score(:vets)/10) < 3.9
       vet_score = 12
-    elsif (total_score(:vets)/10) > 1.9
+    elsif (total_score(:vets)/10) > 1.9 && (total_score(:vets)/10) < 2.9
       vet_score = 8
-    elsif (total_score(:vets)/10) > 0.9
+    else
       vet_score = 4
     end
   end
@@ -80,13 +80,13 @@ class YelpScore
   def services_score
     if (total_score(:services)/10) > 4.9
       services_score = 10
-    elsif (total_score(:services)/10) > 3.9
+    elsif (total_score(:services)/10) > 3.9 && (total_score(:services)/10) < 4.9
       services_score = 8
-    elsif (total_score(:services)/10) > 2.9
+    elsif (total_score(:services)/10) > 2.9 && (total_score(:services)/10) < 3.9
       services_score = 6
-    elsif (total_score(:services)/10) > 1.9
+    elsif (total_score(:services)/10) > 1.9 && (total_score(:services)/10) < 2.9
       services_score = 4
-    elsif (total_score(:services)/10) > 0.9
+    else
       services_score = 2
     end
   end
@@ -98,13 +98,13 @@ class YelpScore
   def stores_score
     if total_score(:stores)/10 > 4.9
       stores_score = 10
-    elsif total_score(:stores)/10 > 3.9
+    elsif total_score(:stores)/10 > 3.9 && (total_score(:stores)/10) < 4.9
       stores_score = 8
-    elsif total_score(:stores)/10 > 2.9
+    elsif total_score(:stores)/10 > 2.9 && (total_score(:stores)/10) < 3.9
        stores_score = 6
-    elsif total_score(:stores)/10 > 1.9
+    elsif total_score(:stores)/10 > 1.9 && (total_score(:stores)/10) < 2.9
       stores_score = 4
-    elsif total_score(:stores)/10 > 0.9
+    else
       stores_score = 2
     end
   end

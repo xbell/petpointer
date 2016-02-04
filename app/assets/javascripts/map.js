@@ -10,7 +10,7 @@ $(function() {
     if ($(this).is(':checked')) {
       // get current marker position
       geocoder.geocode({"location": marker.position}, function(response) {
-        response[0].formatted_address;
+        response[0].formatted_address;  
         // ajax request to my server to save address into database
         // $.post("/map", {zillow_id: response[0].formatted_address});
         $.post("/map", {zillow_id: "48712906"});

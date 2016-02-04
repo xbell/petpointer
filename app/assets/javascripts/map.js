@@ -10,7 +10,7 @@ $(function() {
     if ($(this).is(':checked')) {
       // get current marker position
       geocoder.geocode({"location": marker.position}, function(response) {
-        response[0].formatted_address;  
+        response[0].formatted_address;
         // ajax request to my server to save address into database
         $.post("/map", {address: response[0].formatted_address});
       });
@@ -76,9 +76,6 @@ $(function() {
   $("#map-search").submit(function(event){
     event.preventDefault();
     var address = $("#address").val();
-    // str variable is used to dynamically search yelp based on address input; it is
-    // passed into the AJAX method below.
-    var str = ["/yelp/",address].join("");
 
       // need address variable each time for the click function to work
       geocoder.geocode({'address': address }, function(results) {
@@ -91,7 +88,7 @@ $(function() {
       });
 
       // AJAX FOR YELP
-      $.get(str, function(response) {
+      $.get("/yelp", {'address': address}, function(response) {
         // add scores for each yelp category:
         $("#parks-score").html(response.parks_score);
         $("#vets-score").html(response.vets_score);

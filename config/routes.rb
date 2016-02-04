@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root to: "petter#index"
 
   get  "/sign-up"          , to: "users#sign_up"     , as: :sign_up
@@ -14,7 +13,7 @@ Rails.application.routes.draw do
   post "/map"              , to: "map#favorite"
   delete "/map"            , to: "map#delete_favorite"
 
-  get  "/yelp/:address"    , to: "yelp#yelp"
+  get  "/yelp"             , to: "yelp#yelp"
 
   get "/zillow"            , to: "zillow#zillow"
 end

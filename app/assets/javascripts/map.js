@@ -123,20 +123,23 @@ $(function() {
         // END list top property matches within each YELP category:
       });
       // keeps star checked or not
-      $.get("/favorites/48712906", function(data, status) {
-        // console.log(status);
-        // if 200 then true
-        if(status === "success") {
-          // alert("success");
-          $("#rating-input-1-1").prop("checked", true);
-          // $("#rating-input-1-1").html("checked");
-        // if 404 then false
-        } else {
-          // alert("fail");
-          $("#rating-input-1-1").prop("checked", false);
-          // $("#rating-input-1-1").html("unchecked");
-        }
-      });
+      if ($("#rating-input-1-1").length) {
+        $.get("/favorites/48712906", function(data, status) {
+          // console.log(status);
+          // if 200 then true
+          if(status === "success") {
+            // alert("success");
+            $("#rating-input-1-1").prop("checked", true);
+            // $("#rating-input-1-1").html("checked");
+          // if 404 then false
+          } else {
+            // alert("fail");
+            $("#rating-input-1-1").prop("checked", false);
+            // $("#rating-input-1-1").html("unchecked");
+          }
+        });
+      }
+
 
       // AJAX FOR ZILLOW – COMPLETE ON SEPARATE BRANCH
       // $.get("/zillow", function(response) {

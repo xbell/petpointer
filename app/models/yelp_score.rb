@@ -9,9 +9,10 @@ class YelpScore
     @score_hash = score_hash
   end
 
-  def overall_score
+  def overall_yelp_score
      total_pet_services_score + parks_score + vet_score
-     #WILL ADD ZILLOW DATA? to include the square footage and noise score
+     #MVP: calculate overall score from all APIs by doing math on map view using JS
+     #2.0: calculate overall score from all APIs  in a separate controller
   end
 
   def total_score(score_key)
@@ -21,11 +22,15 @@ class YelpScore
 
   def biz_distance(score_key)
     businesses(score_key).map {|b| (b.distance)/1760}
-    # converted distance from miles to yards for all businesses
+    # converted distance from yards to miles for all businesses
   end
 
   def biz_name(score_key)
     businesses(score_key).map {|b| b.name}
+  end
+
+  def park_names
+    biz_name(:parks)
   end
 
   def park_distance
@@ -34,19 +39,15 @@ class YelpScore
     # biz_distance(:parks)
   end
 
-  def park_names
-    biz_name(:parks)
-  end
-
   def parks_score
     #  (total_score(:parks)/10)
     if park_distance < 0.26
       park_score = 20
-    elsif park_distance > 1 && park_distance < 1.9
+    elsif park_distance < 1
       park_score = 15
-    elsif park_distance > 2 && park_distance < 4.9
+    elsif park_distance < 2
       park_score = 10
-    elsif park_distance > 5 && park_distance < 30
+    elsif park_distance < 5
       park_score = 5
     else
       park_score = 0

@@ -77,7 +77,7 @@ $(function() {
     event.preventDefault();
     var address = $("#address").val();
     // str variable is used to dynamically search yelp based on address input; it is
-    // passed into the AJAX method below. 
+    // passed into the AJAX method below.
     var str = ["/yelp/",address].join("");
 
       // need address variable each time for the click function to work
@@ -96,14 +96,29 @@ $(function() {
         $("#parks-score").html(response.parks_score);
         $("#vets-score").html(response.vets_score);
         $("#pet-services-score").html(response.total_pet_services_score);
-        // list top property matches within each category:
 
+        // BEGIN list top property matches within each YELP category:
         var parks = response.park_names
         for (i = 0; i < parks.length; i++) {
           $("#parks").append(
             $('<li>').append(parks[i])
           );
         };
+
+        var vets = response.vet_names
+        for (i = 0; i < vets.length; i++) {
+          $("#vets").append(
+            $('<li>').append(vets[i])
+          );
+        };
+
+        var pet_services = response.pet_services_names
+        for (i = 0; i < pet_services.length; i++) {
+          $("#pet_services").append(
+            $('<li>').append(pet_services[i])
+          );
+        };
+        // END list top property matches within each YELP category:
       });
 
       // AJAX FOR ZILLOW – COMPLETE ON SEPARATE BRANCH

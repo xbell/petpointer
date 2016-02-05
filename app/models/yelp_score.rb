@@ -92,11 +92,11 @@ class YelpScore
       services_score = 0
     elsif (total_score(:services)/10) > 4.9
       services_score = 10
-    elsif (total_score(:services)/10) > 3.9 && (total_score(:services)/10) < 4.9
+    elsif (total_score(:services)/10) < 4.9 && (total_score(:services)/10) >= 4.0
       services_score = 8
-    elsif (total_score(:services)/10) > 2.9 && (total_score(:services)/10) < 3.9
+    elsif (total_score(:services)/10) < 4.0 && (total_score(:services)/10) >= 3.0
       services_score = 6
-    elsif (total_score(:services)/10) > 1.9 && (total_score(:services)/10) < 2.9
+    elsif (total_score(:services)/10) > 3.0 && (total_score(:services)/10) >= 2.0
       services_score = 4
     else
       services_score = 2
@@ -112,11 +112,11 @@ class YelpScore
       stores_score = 0
     elsif total_score(:stores)/10 > 4.9
       stores_score = 10
-    elsif total_score(:stores)/10 > 3.9 && (total_score(:stores)/10) < 4.9
+    elsif total_score(:stores)/10 < 4.9 && (total_score(:stores)/10) >= 4.0
       stores_score = 8
-    elsif total_score(:stores)/10 > 2.9 && (total_score(:stores)/10) < 3.9
+    elsif total_score(:stores)/10 < 4.0 && (total_score(:stores)/10) >= 3.0
        stores_score = 6
-    elsif total_score(:stores)/10 > 1.9 && (total_score(:stores)/10) < 2.9
+    elsif total_score(:stores)/10 < 3.0 && (total_score(:stores)/10) >= 2.0
       stores_score = 4
     else
       stores_score = 2

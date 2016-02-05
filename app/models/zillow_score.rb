@@ -11,7 +11,7 @@ class ZillowScore
   end
 
   def total_score
-    a = lot_size.to_i - interior_square_feet.to_i
+    a = lot_size.to_i + interior_square_feet.to_i
     if a == nil
       0
     elsif a > 43000

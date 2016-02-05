@@ -98,6 +98,8 @@ $(function() {
 
         // BEGIN list top property matches within each YELP category:
         var parks = response.park_names
+        // clear list of any existing parks
+        $("#parks").empty();
         for (i = 0; i < parks.length; i++) {
           $("#parks").append(
             $('<li>').append(parks[i])
@@ -105,6 +107,8 @@ $(function() {
         };
 
         var vets = response.vet_names
+        // clear list of any existing vets
+        $("#vets").empty();
         for (i = 0; i < vets.length; i++) {
           $("#vets").append(
             $('<li>').append(vets[i])
@@ -112,6 +116,8 @@ $(function() {
         };
 
         var pet_services = response.pet_services_names
+        // clear list of any existing pet services
+        $("#pet_services").empty();
         for (i = 0; i < pet_services.length; i++) {
           $("#pet_services").append(
             $('<li>').append(pet_services[i])

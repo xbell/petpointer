@@ -53,7 +53,7 @@ width: 48.5vw;
 
   // REMOVE THIS ONCE ALL SCORES ARE DYNAMICALLY GENERATED
   #total-score, #sqft-score, #noise-score {
-    color: orange;
+    color: #1565c0;
   }
   // REMOVE THIS ONCE ALL SCORES ARE DYNAMICALLY GENERATED
 
@@ -95,38 +95,60 @@ width: 48.5vw;
     font-size: 25px;
     padding-top: 25px;
     margin-bottom: 0;
+    font-family: "Comic Sans MS";
+    color: #1565c0;
   }
 
   p {
     text-align: center;
     font-size: 20px;
-    margin-bottom: 0;
+    margin-bottom: 20px;
     padding-bottom: 5px;
+    font-family: "Comic Sans MS";
+    color: #1565c0;
   }
 
   #petpointlogo section {
     @include outer-container;
-    margin-top:35px;
+    margin-top:10px;
     padding-bottom:10px;
+    text-align: center;
 
     article, aside {
-      float: left;
+      // float: left;
     }
 
     article {
       @include span-columns(9);
+      width: 94.41059%;
 
       p, #total-score {
-        float: right;
+        // float: right;
       }
 
       p {
         font-size: 20px;
+        // margin-top: -25px;
       }
 
       #total-score {
         font-size: 90px;
-        padding-left: 10px;
+        font-family: "Comic Sans MS";
+
+        // padding-left: 10px;
+      }
+
+      #logo-div {
+        background-image: url("petlogo.png");
+        position: relative;
+        margin-left: auto;
+        margin-right: auto;
+        height: 200px;
+        background-repeat: no-repeat;
+        background-position: center;
+        margin-top: -174px;
+        z-index: -1;
+        opacity: .8;
       }
     }
 

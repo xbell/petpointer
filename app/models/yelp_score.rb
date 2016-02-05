@@ -4,7 +4,6 @@ class YelpScore
   # :services => @pet_services.businesses,
   # :stores   => @pet_stores.businesses,
   # :parks    => @parks.businesses,
-
   attr_accessor :score_hash
 
   def initialize(score_hash)
@@ -19,7 +18,6 @@ class YelpScore
 
   def total_score(score_key)
     # expecting 10 businesses
-
     if score_key == nil
       0
     else

@@ -85,23 +85,27 @@ body h2, h3, h4, h5 {
   #categories {
     .category {
       float: left;
-      @include span-columns(3);
+      @include span-columns(2.4);
       @include tablet-resize;
       @include mobile-resize;
+      padding-bottom: 20px;
 
       .cat-name {
         font-size: 20px;
         margin-bottom: 2px;
       }
 
+      .cat-image, .cat-description {
+
+      }
+
       .cat-image {
-        height: 160px;
+        height: 120px;
         width: 100%;
-        background-color: rgb(131, 175, 207);
       }
 
       .cat-description {
-        font-size: 16px;
+        font-size: 14px;
       }
     }
   }

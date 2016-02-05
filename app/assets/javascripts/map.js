@@ -103,10 +103,7 @@ $(function() {
 
         var zip = ""
         var street_address = ""
-
-
-
-
+        // CODE FOR ZIPCODE/Street Address Variable
         if (status==google.maps.GeocoderStatus.OK){
           var results = results[0].formatted_address;
           var street_address = results.split(", ")[0];
@@ -114,7 +111,6 @@ $(function() {
           var zip = zip_experiment.split(" ")[1];
          console.log(zip);
          console.log(street_address);
-        //  console.log(results);
        } else
 
        {
@@ -122,13 +118,13 @@ $(function() {
        };
 
         $.get("/zillow", {'street_address': street_address, 'zip': zip}, function(response) {
-        // CODE FOR ZIPCODE Variable
+
         $("#sqft-score").html(response.zillow_score);
         $("#interior-size").html(response.zillow_interior);
         $("#lot-size").html(response.zillow_lot);
         $("#zillow-address").html(response.zillow_address);
         });
-        // Code For Street Variable
+    
 
         // setCenter will move the map
         map.setCenter({lat: lat, lng: lng});

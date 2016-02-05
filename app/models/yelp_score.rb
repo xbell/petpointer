@@ -110,7 +110,7 @@ class YelpScore
 
   def stores_score
     if total_score(:stores) == 0
-      stores_score = 0  
+      stores_score = 0
     elsif total_score(:stores)/10 > 4.9
       stores_score = 10
     elsif total_score(:stores)/10 > 3.9 && (total_score(:stores)/10) < 4.9

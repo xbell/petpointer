@@ -6,8 +6,10 @@ class ZillowController < ApplicationController
     # eventually, values for :address and :citystatezip will have to be replaced
     # with variables, passed in via AJAX from Google Maps address data, gathered
     # during search
-    @property = Rubillow::PropertyDetails.deep_search_results({ :address => '601 1st St NW', :citystatezip => 'moultrie,ga,31768' })
-    # Need either city,state or zip code for citystatezip
+    @street_address = params[:street_address]
+    @zip = params[:zip]
+    @property = Rubillow::PropertyDetails.deep_search_results({ :address => @street_address, :citystatezip => @zip})
+    # Need either city&state or zip code for citystatezip
     @propertyz = @property.zpid
     @property_comps = Rubillow::PropertyDetails.deep_comps({ :zpid => @propertyz , :count => 5 })
     @property_updated = Rubillow::PropertyDetails.updated_property_details({zpid: @propertyz})

@@ -1,10 +1,13 @@
 source 'https://rubygems.org'
 
 gem 'bourbon'
-
-gem "rubillow"
+#
+gem "rubillow", git: "https://github.com/GaBison2007/rubillow.git"
+#
+# gem "rubillow", path: "/Users/leshoyastarkey/work/rubillow"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'neat'
+gem 'geocoder'
 gem 'bitters'
 gem 'rails', '4.2.5'
 gem "refills", group: :development

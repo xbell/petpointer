@@ -3,17 +3,17 @@ var marker;
 var markers = [];
 var geocoder;
 
+
 $(function() {
   // saves and deletes favorites but doesn't remember if address has been saved yet
   // need to replace address with Zillow Id
-  $("#rating-input-1-1").on("change", function() {
+  $('#rating-input-1-1').on('change', function() {
     if ($(this).is(':checked')) {
       // get current marker position
       geocoder.geocode({"location": marker.position}, function(response) {
         response[0].formatted_address;
         // ajax request to my server to save address into database
-        // $.post("/map", {zillow_id: response[0].formatted_address});
-        $.post("/map", {zillow_id: "48712906"});
+        $.post("/map", {address: response[0].formatted_address});
       });
     } else {
       geocoder.geocode({"location": marker.position}, function(response) {
@@ -21,17 +21,18 @@ $(function() {
         $.ajax({
           url: "/map",
           type: "DELETE",
-          // data: {zillow_id: response[0].formatted_address}
-          data: {zillow_id: "48712906"}
+          data: {address: response[0].formatted_address}
         });
       });
     }
   });
 
-  $('.expander-trigger').click(function() {
+  $('.expander-trigger').click(function(){
     $(this).toggleClass("expander-hidden");
   });
   // javascript for expander
+
+
   if (navigator === undefined) {
     initializeMap(-34.1, 150.6);
   } else {
@@ -91,14 +92,43 @@ $(function() {
 
   geocoder = new google.maps.Geocoder();
 
-  $("#map-search").submit(function(event) {
-    event.preventDefault();
-    var address = $("#address").val();
+   $("#map-search").submit(function(event) {
+     event.preventDefault();
+     var address = $("#address").val();
 
-      // need address variable each time for the click function to work
-      geocoder.geocode({'address': address }, function(results) {
-        var lat = results[0].geometry.location.lat();
-        var lng = results[0].geometry.location.lng();
+       // need address variable each time for the click function to work
+       geocoder.geocode({'address': address }, function(results,status) {
+         var lat = results[0].geometry.location.lat();
+         var lng = results[0].geometry.location.lng();
+
+        var zip = ""
+        var street_address = ""
+
+        if (status==google.maps.GeocoderStatus.OK){
+          var results = results[0].formatted_address;
+          var street_address = results.split(", ")[0];
+          var zip_experiment = results.split(", ").slice(-2, -1)[0];
+          var zip = zip_experiment.split(" ")[1];
+         console.log(zip);
+         console.log(street_address);
+        //  console.log(results);
+       } else
+
+       {
+         alert("Invalid Address Due to" + status);
+       };
+
+
+        $.get("/zillow", {'street_address': street_address, 'zip': zip}, function(response) {
+
+        // CODE FOR ZIPCODE Variable
+
+
+
+
+        });
+        // Code For Street Variable
+
         // setCenter will move the map
         map.setCenter({lat: lat, lng: lng});
         // setMarker resets marker to new map location
@@ -144,28 +174,31 @@ $(function() {
         sumScores();
         // END list top property matches within each YELP category:
       });
-      // keeps star checked or not
-      if ($("#rating-input-1-1").length) {
-        $.get("/favorites/48712906", function(data, status) {
-          // console.log(status);
-          // if 200 then true
-          if(status === "success") {
-            // alert("success");
-            $("#rating-input-1-1").prop("checked", true);
-            // $("#rating-input-1-1").html("checked");
-          // if 404 then false
-          } else {
-            // alert("fail");
-            $("#rating-input-1-1").prop("checked", false);
-            // $("#rating-input-1-1").html("unchecked");
-          }
-        });
-      }
-
 
       // AJAX FOR ZILLOW – COMPLETE ON SEPARATE BRANCH
-      // $.get("/zillow", function(response) {
-      //   $("#sqft-score").html(response._______)
+      // var street_address;
+      // var zip;
+      //
+      // geocoder.geocode({'address': address }, function(results, status) {
+      //   var lat = results[0].geometry.location.lat();
+      //   var lng = results[0].geometry.location.lng();
+      //
+      // if (status==google.maps.GeocoderStatus.OK){
+      //    results = results[0].formatted_address
+      //    street_address = results.split(", ", 1)
+      //    zip_experiment = results.split(", ").slice(-2, -1)[0]
+      //    zip = zip_experiment.split(" ")
+      //   console.log(zip);
+      // } else
+      //
+      // {
+      //   alert("Invalid Address");
+      // };
+      // // // });
+
+      // $.get("/zillow", {'street_address': street_address, 'zip': zip}, function(response) {
+      //   console.log(street_address);
+      //     console.log(zip);
       // });
     });
 

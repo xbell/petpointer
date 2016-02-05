@@ -41,7 +41,6 @@ class ZillowController < ApplicationController
                     :zillow_address => @zillow_address,
                     :zurls => @zurls,
                     :zpid => @zpid
-
      }
 
   end

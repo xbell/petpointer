@@ -4,7 +4,6 @@ var markers = [];
 var geocoder;
 
 
-
 $(function() {
   // saves and deletes favorites but doesn't remember if address has been saved yet
   // need to replace address with Zillow Id
@@ -76,36 +75,29 @@ $(function() {
   // end logic for displaying map markers
 
   geocoder = new google.maps.Geocoder();
-  // #map-search
 
-  $("#map-search").submit(function(event){
-    event.preventDefault();
-    var address = $("#address").val();
-    // str variable is used to dynamically search yelp based on address input; it is
-    // passed into the AJAX method below.
+   $("#map-search").submit(function(event) {
+     event.preventDefault();
+     var address = $("#address").val();
 
+       // need address variable each time for the click function to work
+       geocoder.geocode({'address': address }, function(results,status) {
+         var lat = results[0].geometry.location.lat();
+         var lng = results[0].geometry.location.lng();
 
-      // need address variable each time for the click function to work
-      geocoder.geocode({'address': address }, function(results, status) {
-        var lat = results[0].geometry.location.lat();
-        var lng = results[0].geometry.location.lng();
-
-      //
-      //
-      //   if (status==google.maps.GeocoderStatus.OK){
-      //     var results = results[0].formatted_address
-      //     var street_address = results.split(", ", 1)
-      //     var zip_experiment = results.split(", ").slice(-2, -1)[0]
-      //     var zip = zip_experiment.split(" ")
-      //     // console.log(zip);
-      //   } else
-      //
-      //   {
-      //     alert("Invalid Address");
-      //   }
 
         // CODE FOR ZIPCODE Variable
+        if (status==google.maps.GeocoderStatus.OK){
+           results = results[0].formatted_address
+           street_address = results.split(", ", 1)
+           zip_experiment = results.split(", ").slice(-2, -1)[0]
+           zip = zip_experiment.split(" ")
+          console.log(zip);
+        } else
 
+        {
+          alert("Invalid Address");
+        };
 
         // Code For Street Variable
 
@@ -147,26 +139,25 @@ $(function() {
       });
 
       // AJAX FOR ZILLOW – COMPLETE ON SEPARATE BRANCH
-
-      var street_address;
-      var zip;
-      
-      geocoder.geocode({'address': address }, function(results, status) {
-        var lat = results[0].geometry.location.lat();
-        var lng = results[0].geometry.location.lng();
-
+      // var street_address;
+      // var zip;
+      //
+      // geocoder.geocode({'address': address }, function(results, status) {
+      //   var lat = results[0].geometry.location.lat();
+      //   var lng = results[0].geometry.location.lng();
+      //
       // if (status==google.maps.GeocoderStatus.OK){
-         results = results[0].formatted_address
-         street_address = results.split(", ", 1)
-         zip_experiment = results.split(", ").slice(-2, -1)[0]
-         zip = zip_experiment.split(" ")
-        // console.log(zip);
+      //    results = results[0].formatted_address
+      //    street_address = results.split(", ", 1)
+      //    zip_experiment = results.split(", ").slice(-2, -1)[0]
+      //    zip = zip_experiment.split(" ")
+      //   console.log(zip);
       // } else
       //
       // {
       //   alert("Invalid Address");
-      });
-      // });
+      // };
+      // // // });
 
       $.get("/zillow", {'street_address': street_address, 'zip': zip}, function(response) {
         console.log(street_address);

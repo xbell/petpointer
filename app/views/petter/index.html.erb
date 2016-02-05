@@ -9,118 +9,81 @@
 
 <div class="body-container" id="about-pp">
   <h2>What Is PetPointer?</h2>
-  <h3>PetPointer calculates the pet-friendliness of any address based on four factors:</h3>
+  <h3>PetPointer calculates the pet-friendliness of any address based on five factors:</h3>
   <div id="categories">
     <div class="category">
       <h4 class="cat-name">Parks</h4>
-      <div class="cat-image"></div>
-      <p class="cat-description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-        nisi ut aliquip ex ea commodo consequat.
-      </p>
+      <%= image_tag "park.png", class: "cat-image"%>
+      <div class="cat-description">
+        <p>
+          Let's go on a walk! Whether it's your dog chasing a frisbee and meeting
+          other pups, or your cat doing leash-training for outdoor adventures,
+          play areas make for happy pets. Close parks contribute to a high score
+          in this category.
+        </p>
+      </div>
+    </div>
+    <div class="category">
+      <h4 class="cat-name">Vets</h4>
+      <%= image_tag "vet.png", class: "cat-image"%>
+      <div class="cat-description">
+        <p>
+          Pet checkups can be hard, and emergencies are worse. But when the time
+          comes, you want to have good veterinary care nearby. The vet score is
+          based on Yelp users' ratings of the vets closest to your location.
+        </p>
+      </div>
     </div>
     <div class="category">
       <h4 class="cat-name">Pet Services</h4>
-      <div class="cat-image"></div>
-      <p class="cat-description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-        nisi ut aliquip ex ea commodo consequat.
-      </p>
+      <%= image_tag "services.png", class: "cat-image"%>
+      <div class="cat-description">
+        <p>
+          Time to restock on kibble and litter? Want to buy a spur-of-the-moment
+          treat? Or maybe your pet is in need of grooming, training or pet-sitting?
+          The pet services score is determined by Yelp users' ratings of nearby
+          providers of pet goods and services.
+        </p>
+      </div>
     </div>
     <div class="category">
       <h4 class="cat-name">Property Size</h4>
-      <div class="cat-image"></div>
-      <p class="cat-description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-        nisi ut aliquip ex ea commodo consequat.
-      </p>
+      <%= image_tag "sqft.png", class:"cat-image" %>
+      <div class="cat-description">
+        <p>
+          Pets spend a lot of time at home, so having plenty of space to rest and
+          roam is essential to their wellbeing. Indoor and outdoor square footage
+          of the property are both counted in the property size score.
+        </p>
+      </div>
     </div>
     <div class="category">
       <h4 class="cat-name">Noise</h4>
-      <div class="cat-image"></div>
-      <p class="cat-description">
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-        eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-        nisi ut aliquip ex ea commodo consequat.
-      </p>
+      <%= image_tag "noise.png", class: "cat-image" %>
+      <div class="cat-description">
+        <p>
+          Excessive noise from construction, traffic and neighborhood events can
+          negatively impact your pet's health. The noise score factors in the
+          prevalence and intensity of noise pollution near your location. Limited
+          to searches in Seattle.
+        </p>
+      </div>
     </div>
   </div>
  </div>
 
- <div class="body-container" >
-   <h2> Users' Favorites </h2>
-   <div id="examples">
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-   </div>
- </div>
-
-
- <div class="body-container">
-   <h2> Top-Rated Properties </h2>
-   <div id="examples">
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-     <div class="top-property">
-       <img class="top-property-image"></img>
-     </div>
-   </div>
- </div>
-
-
  <div id="footer">
-   <h2> Footer: details about site creators, technologies used, APIs called, etc. </h2>
+   <div id="footer-content">
+     <h2>
+       PetPointer is a collaboration between
+       <%= link_to "Evelyn Bell", "https://github.com/xbell" %>,
+       <%= link_to "LeShoya Starkey", "https://github.com/GaBison2007" %>, and
+       <%= link_to "Daniel Adler", "https://github.com/danieladler" %> for
+       <%= link_to "Code Builders", "http://code.builders" %>. |
+       API data provided by
+       <%= link_to "Yelp", "http://yelp.com" %> and
+       <%= link_to "Zillow", "http://zillow.com"%>.
+     </h2>
+   </div>
  </div>
-
 </div>

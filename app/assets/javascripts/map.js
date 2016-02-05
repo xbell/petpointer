@@ -95,6 +95,11 @@ $(function() {
      event.preventDefault();
      var address = $("#address").val();
      $("#mainaddress").html(address);
+
+     $(".sub-score").empty();
+     $("#interior-size").empty();
+     $("#lot-size").empty();
+
        // need address variable each time for the click function to work
        geocoder.geocode({'address': address }, function(results,status) {
          var lat = results[0].geometry.location.lat();
@@ -108,8 +113,6 @@ $(function() {
           var street_address = results.split(", ")[0];
           var zip_experiment = results.split(", ").slice(-2, -1)[0];
           var zip = zip_experiment.split(" ")[1];
-         console.log(zip);
-         console.log(street_address);
        } else
 
        {
@@ -117,18 +120,18 @@ $(function() {
        };
 
         $.get("/zillow", {'street_address': street_address, 'zip': zip}, function(response) {
-
-        $("#sqft-score").html(response.zillow_score);
-        $("#interior-size").html(response.zillow_interior);
-        $("#lot-size").html(response.zillow_lot);
-        $("#zillow-address").html(response.zillow_address);
+          $("#sqft-score").html(response.zillow_score);
+          $("#interior-size").html(response.zillow_interior);
+          $("#lot-size").html(response.zillow_lot);
+          $("#zillow-address").html(response.zillow_address);
+          sumScores();
         });
-
 
         // setCenter will move the map
         map.setCenter({lat: lat, lng: lng});
         // setMarker resets marker to new map location
         setMarker(lat, lng);
+
       });
 
       // AJAX FOR YELP

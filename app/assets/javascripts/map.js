@@ -87,10 +87,10 @@ $(function() {
 
         var zip = ""
         var street_address = ""
-        
+
         if (status==google.maps.GeocoderStatus.OK){
           var results = results[0].formatted_address;
-          var street_address = results.split(", ", 1);
+          var street_address = results.split(", ")[0];
           var zip_experiment = results.split(", ").slice(-2, -1)[0];
           var zip = zip_experiment.split(" ")[1];
          console.log(zip);

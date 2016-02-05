@@ -42,7 +42,7 @@ class YelpScore
     #  (total_score(:parks)/10)
     if park_distance < 0.26
       park_score = 20
-    elsif park_distance > 1 && park_distance < 1.9
+    elsif park_distance >0.27 && park_distance < 1.9
       park_score = 15
     elsif park_distance > 2 && park_distance < 4.9
       park_score = 10

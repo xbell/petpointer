@@ -3,6 +3,8 @@ var marker;
 var markers = [];
 var geocoder;
 
+
+
 $(function() {
   // saves and deletes favorites but doesn't remember if address has been saved yet
   // need to replace address with Zillow Id
@@ -79,34 +81,34 @@ $(function() {
   $("#map-search").submit(function(event){
     event.preventDefault();
     var address = $("#address").val();
+    // str variable is used to dynamically search yelp based on address input; it is
+    // passed into the AJAX method below.
+
 
       // need address variable each time for the click function to work
-      geocoder.geocode({'address': address }, function(results) {
+      geocoder.geocode({'address': address }, function(results, status) {
         var lat = results[0].geometry.location.lat();
         var lng = results[0].geometry.location.lng();
 
+      //
+      //
+      //   if (status==google.maps.GeocoderStatus.OK){
+      //     var results = results[0].formatted_address
+      //     var street_address = results.split(", ", 1)
+      //     var zip_experiment = results.split(", ").slice(-2, -1)[0]
+      //     var zip = zip_experiment.split(" ")
+      //     // console.log(zip);
+      //   } else
+      //
+      //   {
+      //     alert("Invalid Address");
+      //   }
 
         // CODE FOR ZIPCODE Variable
-        for(var i=0; i < results[0].address_components.length; i++)
-        {
-          var component = results[0].address_components[i];
-          if(component.types[0] == "postal_code")
-          {
-          console.log(component.long_name);
 
-          }
-        }
-        //
+
         // Code For Street Variable
-        // for(var i=0; i < results[0].address_components.length; i++)
-        // {
-        //   var street= results[0].address_components[i];
-        //   if(street.types[0] == "street_address")
-        //   {
-        //   console.log(street.long_name);
-        //
-        //   }
-        // }
+
         // setCenter will move the map
         map.setCenter({lat: lat, lng: lng});
         // setMarker resets marker to new map location
@@ -145,10 +147,30 @@ $(function() {
       });
 
       // AJAX FOR ZILLOW – COMPLETE ON SEPARATE BRANCH
-      var zillowstr = ["/zillow/", address].join("");
 
-      $.get( zillowstr, function(response) {
-        console.log("test");
+      var street_address;
+      var zip;
+      
+      geocoder.geocode({'address': address }, function(results, status) {
+        var lat = results[0].geometry.location.lat();
+        var lng = results[0].geometry.location.lng();
+
+      // if (status==google.maps.GeocoderStatus.OK){
+         results = results[0].formatted_address
+         street_address = results.split(", ", 1)
+         zip_experiment = results.split(", ").slice(-2, -1)[0]
+         zip = zip_experiment.split(" ")
+        // console.log(zip);
+      // } else
+      //
+      // {
+      //   alert("Invalid Address");
+      });
+      // });
+
+      $.get("/zillow", {'street_address': street_address, 'zip': zip}, function(response) {
+        console.log(street_address);
+          console.log(zip);
       });
     });
 

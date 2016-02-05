@@ -86,7 +86,6 @@ $(function() {
     for (var i = 0; i < subScores.length; i++) {
       totalScore += subScores[i] << 0;
     }
-
     $("#total-score").html(totalScore);
   }
 
@@ -124,7 +123,7 @@ $(function() {
         $("#lot-size").html(response.zillow_lot);
         $("#zillow-address").html(response.zillow_address);
         });
-    
+
 
         // setCenter will move the map
         map.setCenter({lat: lat, lng: lng});

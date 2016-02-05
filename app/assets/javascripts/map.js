@@ -73,6 +73,22 @@ $(function() {
   setMarker(lat, lng);
   // end logic for displaying map markers
 
+  // JS to update total score to sum of all sub-scores
+  var sumScores = function() {
+
+    var subScores = []
+    $(".sub-score").each(function() {
+      subScores.push(this.innerHTML);
+    });
+
+    var totalScore = 0;
+    for (var i = 0; i < subScores.length; i++) {
+      totalScore += subScores[i] << 0;
+    }
+
+    $("#total-score").html(totalScore);
+  }
+
   geocoder = new google.maps.Geocoder();
 
   $("#map-search").submit(function(event) {
@@ -123,6 +139,9 @@ $(function() {
             $('<li>').append(pet_services[i])
           );
         };
+        // run sumScores method after all Yelp sub-scores have been updated
+        // will have to run sumScores again at the end of Zillow AJAX request
+        sumScores();
         // END list top property matches within each YELP category:
       });
       // keeps star checked or not

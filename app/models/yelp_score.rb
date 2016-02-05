@@ -4,6 +4,7 @@ class YelpScore
   # :services => @pet_services.businesses,
   # :stores   => @pet_stores.businesses,
   # :parks    => @parks.businesses,
+
   attr_accessor :score_hash
 
   def initialize(score_hash)
@@ -71,11 +72,11 @@ class YelpScore
       vet_score = 0
     elsif (total_score(:vets)/10) > 4.9
       vet_score = 20
-    elsif (total_score(:vets)/10) > 3.9 && (total_score(:vets)/10) < 4.9
+    elsif (total_score(:vets)/10) < 4.9 && (total_score(:vets)/10) >= 4.0
       vet_score = 16
-    elsif (total_score(:vets)/10) > 2.9 && (total_score(:vets)/10) < 3.9
+    elsif (total_score(:vets)/10) < 4.0 && (total_score(:vets)/10) >= 3.0
       vet_score = 12
-    elsif (total_score(:vets)/10) > 1.9 && (total_score(:vets)/10) < 2.9
+    elsif (total_score(:vets)/10) < 3.0 && (total_score(:vets)/10) >= 2.0
       vet_score = 8
     else
       vet_score = 4

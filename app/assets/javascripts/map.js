@@ -74,6 +74,22 @@ $(function() {
   setMarker(lat, lng);
   // end logic for displaying map markers
 
+  // JS to update total score to sum of all sub-scores
+  var sumScores = function() {
+
+    var subScores = []
+    $(".sub-score").each(function() {
+      subScores.push(this.innerHTML);
+    });
+
+    var totalScore = 0;
+    for (var i = 0; i < subScores.length; i++) {
+      totalScore += subScores[i] << 0;
+    }
+
+    $("#total-score").html(totalScore);
+  }
+
   geocoder = new google.maps.Geocoder();
 
    $("#map-search").submit(function(event) {
@@ -128,6 +144,8 @@ $(function() {
 
         // BEGIN list top property matches within each YELP category:
         var parks = response.park_names
+        // clear list of any existing parks
+        $("#parks").empty();
         for (i = 0; i < parks.length; i++) {
           $("#parks").append(
             $('<li>').append(parks[i])
@@ -135,6 +153,8 @@ $(function() {
         };
 
         var vets = response.vet_names
+        // clear list of any existing vets
+        $("#vets").empty();
         for (i = 0; i < vets.length; i++) {
           $("#vets").append(
             $('<li>').append(vets[i])
@@ -142,11 +162,16 @@ $(function() {
         };
 
         var pet_services = response.pet_services_names
+        // clear list of any existing pet services
+        $("#pet_services").empty();
         for (i = 0; i < pet_services.length; i++) {
           $("#pet_services").append(
             $('<li>').append(pet_services[i])
           );
         };
+        // run sumScores method after all Yelp sub-scores have been updated
+        // will have to run sumScores again at the end of Zillow AJAX request
+        sumScores();
         // END list top property matches within each YELP category:
       });
 

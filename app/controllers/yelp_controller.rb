@@ -18,7 +18,7 @@ class YelpController < ApplicationController
       :parks    => @parks.businesses,
     )
 
-    @total_score = yelp_score.overall_score
+    @overall_yelp_score = yelp_score.overall_yelp_score
     @vets_score = yelp_score.vet_score
     @parks_score = yelp_score.parks_score
     @pet_stores_score = yelp_score.stores_score
@@ -29,7 +29,6 @@ class YelpController < ApplicationController
     @vet_names = yelp_score.vet_names
     @pet_services_names = yelp_score.services_names
     @pet_stores_names = yelp_score.stores_names
-
 
     render json: { :total_score => @total_score,
                    :vets_score => @vets_score,
@@ -43,6 +42,5 @@ class YelpController < ApplicationController
                    :pet_services => @pet_services_score,
                    :pet_services_names => @pet_services_names
      }
-
   end
 end

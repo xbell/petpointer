@@ -132,13 +132,40 @@ body h2, h3, h4, h5 {
   }
 
 #footer {
-  background-color: black;
-  height: 200px;
+  background-color: rgb(0, 59, 82);
+  height: 100px;
 
-  h2 {
-    color: white;
-    font-size: 24px;
-    text-align: center;
-    padding-top: 80px;
+  #footer-content {
+    @include outer-container;
+    @include span-columns(10);
+    @include shift(1);
+    padding: 40px 0px 0px 0px;
+
+    @media (min-width: 481px) and (max-width: 768px) {
+      @include span-columns(10);
+      @include shift(1);
+    }
+
+    @media (max-width: 480px) {
+      @include span-columns(10);
+      @include shift(1);
+      padding-top: 20px;
+    }
+
+    h2 {
+      color: white;
+      font-size: 14px;
+      font-weight: 300;
+      text-align: center;
+
+      a:link, a:visited {
+        text-decoration: none;
+        color: rgb(0, 199, 103);
+      }
+
+      a:hover {
+        color: orange;
+      }
+    }
   }
 }

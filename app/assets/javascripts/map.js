@@ -94,7 +94,7 @@ $(function() {
    $("#map-search").submit(function(event) {
      event.preventDefault();
      var address = $("#address").val();
-
+     $("#mainaddress").html(address);
        // need address variable each time for the click function to work
        geocoder.geocode({'address': address }, function(results,status) {
          var lat = results[0].geometry.location.lat();

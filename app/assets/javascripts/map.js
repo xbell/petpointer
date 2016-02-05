@@ -124,8 +124,9 @@ $(function() {
         $.get("/zillow", {'street_address': street_address, 'zip': zip}, function(response) {
         // CODE FOR ZIPCODE Variable
         $("#sqft-score").html(response.zillow_score);
-
-
+        $("#interior-size").html(response.zillow_interior);
+        $("#lot-size").html(response.zillow_lot);
+        $("#zillow-address").html(response.zillow_address);
         });
         // Code For Street Variable
 

@@ -1,5 +1,6 @@
-PATH
-  remote: /Users/leshoyastarkey/work/rubillow
+GIT
+  remote: https://github.com/GaBison2007/rubillow.git
+  revision: 0ae784627dcfea41582715a56dc926762e088d00
   specs:
     rubillow (0.0.8)
       nokogiri (~> 1.6.0)

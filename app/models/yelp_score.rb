@@ -5,6 +5,8 @@ class YelpScore
   # :stores   => @pet_stores.businesses,
   # :parks    => @parks.businesses,
 
+  attr_accessor :score_hash
+
   def initialize(score_hash)
     @score_hash = score_hash
   end
@@ -17,7 +19,12 @@ class YelpScore
 
   def total_score(score_key)
     # expecting 10 businesses
-    businesses(score_key).map {|b| b.rating}.sum
+
+    if score_key == nil
+      0
+    else
+      businesses(score_key).map {|b| b.rating}.sum
+    end
   end
 
   def biz_distance(score_key)
@@ -40,6 +47,7 @@ class YelpScore
   end
 
   def parks_score
+    return 0 if park_distance == nil
     #  (total_score(:parks)/10)
     if park_distance < 0.26
       park_score = 20
@@ -61,7 +69,9 @@ class YelpScore
   def vet_score
   # vet score will be out of 20 total points
   # edit based off distance
-    if (total_score(:vets)/10) > 4.9
+    if (total_score(:vets) == 0)
+      vet_score = 0
+    elsif (total_score(:vets)/10) > 4.9
       vet_score = 20
     elsif (total_score(:vets)/10) > 3.9 && (total_score(:vets)/10) < 4.9
       vet_score = 16
@@ -79,7 +89,9 @@ class YelpScore
   end
 
   def services_score
-    if (total_score(:services)/10) > 4.9
+    if (total_score(:services) == 0)
+      services_score = 0
+    elsif (total_score(:services)/10) > 4.9
       services_score = 10
     elsif (total_score(:services)/10) > 3.9 && (total_score(:services)/10) < 4.9
       services_score = 8
@@ -97,7 +109,9 @@ class YelpScore
   end
 
   def stores_score
-    if total_score(:stores)/10 > 4.9
+    if total_score(:stores) == 0
+      stores_score = 0  
+    elsif total_score(:stores)/10 > 4.9
       stores_score = 10
     elsif total_score(:stores)/10 > 3.9 && (total_score(:stores)/10) < 4.9
       stores_score = 8

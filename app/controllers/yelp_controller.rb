@@ -17,8 +17,9 @@ class YelpController < ApplicationController
       :stores   => @pet_stores.businesses,
       :parks    => @parks.businesses,
     )
+    # raise
 
-    @total_score = yelp_score.overall_yelp_score
+    @overall_yelp_score = yelp_score.overall_yelp_score
     @vets_score = yelp_score.vet_score
     @parks_score = yelp_score.parks_score
     @pet_stores_score = yelp_score.stores_score

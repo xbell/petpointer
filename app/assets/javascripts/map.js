@@ -5,28 +5,6 @@ var geocoder;
 
 
 $(function() {
-  // saves and deletes favorites but doesn't remember if address has been saved yet
-  // need to replace address with Zillow Id
-  $('#rating-input-1-1').on('change', function() {
-    if ($(this).is(':checked')) {
-      // get current marker position
-      geocoder.geocode({"location": marker.position}, function(response) {
-        response[0].formatted_address;
-        // ajax request to my server to save address into database
-        $.post("/map", {address: response[0].formatted_address});
-      });
-    } else {
-      geocoder.geocode({"location": marker.position}, function(response) {
-        response[0].formatted_address;
-        $.ajax({
-          url: "/map",
-          type: "DELETE",
-          data: {address: response[0].formatted_address}
-        });
-      });
-    }
-  });
-
   $('.expander-trigger').click(function(){
     $(this).toggleClass("expander-hidden");
   });
@@ -110,18 +88,54 @@ $(function() {
           var zip = zip_experiment.split(" ")[1];
          console.log(zip);
          console.log(street_address);
-       } else
-
-       {
+       } else {
          alert("Invalid Address Due to" + status);
        };
 
         $.get("/zillow", {'street_address': street_address, 'zip': zip}, function(response) {
+          $("#sqft-score").html(response.zillow_score);
+          $("#interior-size").html(response.zillow_interior);
+          $("#lot-size").html(response.zillow_lot);
+          $("#zillow-address").html(response.zillow_address);
+          var zpid = response.zpid
 
-        $("#sqft-score").html(response.zillow_score);
-        $("#interior-size").html(response.zillow_interior);
-        $("#lot-size").html(response.zillow_lot);
-        $("#zillow-address").html(response.zillow_address);
+              // saves and deletes favorites but doesn't remember if address has been saved yet
+              // need to replace address with Zillow Id
+              $('#rating-input-1-1').on('change', function() {
+                if ($(this).is(':checked')) {
+                  // get current marker position
+                  geocoder.geocode({"location": marker.position}, function(response) {
+                    response[0].formatted_address;
+                    // ajax request to my server to save address into database
+                    $.post("/map", {zillow_id: zpid});
+                  });
+                } else {
+                  geocoder.geocode({"location": marker.position}, function(response) {
+                    response[0].formatted_address;
+                    $.ajax({
+                      url: "/map",
+                      type: "DELETE",
+                      data: {zillow_id: zpid}
+                    });
+                  });
+                }
+              });
+
+
+
+                if ($("#rating-input-1-1").length) {
+                  $.get("/favorites", {'zillow_id': zpid}, function(data, status) {
+                    $("#rating-input-1-1").prop("checked", true);
+                  }).error(function(){
+                    $("#rating-input-1-1").prop("checked", false);
+                  });
+                }
+        }).error(function(){
+          // alert("This location was not found on Zillow.");
+          $("#sqft-score").html("20");
+          $("#interior-size").html("N/A");
+          $("#lot-size").html("N/A");
+          sumScores();
         });
 
 

@@ -132,8 +132,16 @@ width: 48.5vw;
       }
 
       #total-score {
-        font-size: 90px;
+        font-size: 100px;
         font-family: 'Nunito', sans-serif;
+        -webkit-text-fill-color: #1565c0;
+        -webkit-text-stroke-color: black;
+        // -webkit-text-stroke-color: #65d7a8;
+        -webkit-text-stroke-width: 3px;
+        text-fill-color: #1565c0;
+        text-stroke-color: black;
+        // text-stroke-color: #65d7a8;
+        text-stroke-width: 3px;
 
         // padding-left: 10px;
       }
@@ -146,9 +154,9 @@ width: 48.5vw;
         height: 200px;
         background-repeat: no-repeat;
         background-position: center;
-        margin-top: -174px;
+        margin-top: -187px;
         z-index: -1;
-        opacity: .8;
+        opacity: .9;
       }
     }
 

@@ -85,20 +85,32 @@ $(function() {
          var lat = results[0].geometry.location.lat();
          var lng = results[0].geometry.location.lng();
 
+        var zip = ""
+        var street_address = ""
+        
+        if (status==google.maps.GeocoderStatus.OK){
+          var results = results[0].formatted_address;
+          var street_address = results.split(", ", 1);
+          var zip_experiment = results.split(", ").slice(-2, -1)[0];
+          var zip = zip_experiment.split(" ")[1];
+         console.log(zip);
+         console.log(street_address);
+        //  console.log(results);
+       } else
+
+       {
+         alert("Invalid Address Due to" + status);
+       };
+
+
+        $.get("/zillow", {'street_address': street_address, 'zip': zip}, function(response) {
 
         // CODE FOR ZIPCODE Variable
-        if (status==google.maps.GeocoderStatus.OK){
-           results = results[0].formatted_address
-           street_address = results.split(", ", 1)
-           zip_experiment = results.split(", ").slice(-2, -1)[0]
-           zip = zip_experiment.split(" ")
-          console.log(zip);
-        } else
 
-        {
-          alert("Invalid Address");
-        };
 
+
+
+        });
         // Code For Street Variable
 
         // setCenter will move the map
@@ -159,10 +171,10 @@ $(function() {
       // };
       // // // });
 
-      $.get("/zillow", {'street_address': street_address, 'zip': zip}, function(response) {
-        console.log(street_address);
-          console.log(zip);
-      });
+      // $.get("/zillow", {'street_address': street_address, 'zip': zip}, function(response) {
+      //   console.log(street_address);
+      //     console.log(zip);
+      // });
     });
 
     // grab address from search bar on homepage

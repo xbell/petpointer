@@ -104,6 +104,9 @@ $(function() {
         var zip = ""
         var street_address = ""
 
+
+
+
         if (status==google.maps.GeocoderStatus.OK){
           var results = results[0].formatted_address;
           var street_address = results.split(", ")[0];
@@ -118,12 +121,9 @@ $(function() {
          alert("Invalid Address Due to" + status);
        };
 
-
         $.get("/zillow", {'street_address': street_address, 'zip': zip}, function(response) {
-
         // CODE FOR ZIPCODE Variable
-
-
+        $("#sqft-score").html(response.zillow_score);
 
 
         });
@@ -174,32 +174,6 @@ $(function() {
         sumScores();
         // END list top property matches within each YELP category:
       });
-
-      // AJAX FOR ZILLOW – COMPLETE ON SEPARATE BRANCH
-      // var street_address;
-      // var zip;
-      //
-      // geocoder.geocode({'address': address }, function(results, status) {
-      //   var lat = results[0].geometry.location.lat();
-      //   var lng = results[0].geometry.location.lng();
-      //
-      // if (status==google.maps.GeocoderStatus.OK){
-      //    results = results[0].formatted_address
-      //    street_address = results.split(", ", 1)
-      //    zip_experiment = results.split(", ").slice(-2, -1)[0]
-      //    zip = zip_experiment.split(" ")
-      //   console.log(zip);
-      // } else
-      //
-      // {
-      //   alert("Invalid Address");
-      // };
-      // // // });
-
-      // $.get("/zillow", {'street_address': street_address, 'zip': zip}, function(response) {
-      //   console.log(street_address);
-      //     console.log(zip);
-      // });
     });
 
     // grab address from search bar on homepage

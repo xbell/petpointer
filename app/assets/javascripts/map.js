@@ -133,6 +133,7 @@ $(function() {
               $("#rating-input-1-1").prop("checked", false);
             });
           }
+          sumScores();
         }).error(function(){
           // alert("This location was not found on Zillow.");
           $("#sqft-score").html("20");

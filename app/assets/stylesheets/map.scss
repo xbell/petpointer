@@ -49,15 +49,15 @@ $search-panel-height: 50px;
   }
 
   #right-panel {
-  overflow: scroll;
-  width: 60vw; // desktop width
-  @media (max-width: 768px) { // tablet width
-    width: 100vw;
-  }
+    overflow: scroll;
+    width: 60vw; // desktop width
+    @media (max-width: 768px) { // tablet width
+      width: 100vw;
+    }
 
-  @media (max-width: 480px) { // mobile width
-    // width:
-  }
+    @media (max-width: 480px) { // mobile width
+      // width:
+    }
 
     // REMOVE THIS ONCE ALL SCORES ARE DYNAMICALLY GENERATED
     #total-score, #sqft-score, #noise-score {
@@ -65,36 +65,42 @@ $search-panel-height: 50px;
     }
     // REMOVE THIS ONCE ALL SCORES ARE DYNAMICALLY GENERATED
 
-    .rating {
-      overflow: hidden;
-      display: inline-block;
-      font-size: 0;
-      position: relative;
+    #rating-container {
+      margin: 0 auto;
+      width: 200px;
+      padding: 20px 0;
 
-      .rating-input {
-        float: right;
-        width: 16px;
-        height: 16px;
-        padding: 0;
-        margin: 0 0 0 -16px;
-        opacity: 0;
-      }
-
-      .rating:hover .rating-star:hover,
-      .rating:hover .rating-star:hover ~ .rating-star,
-      .rating-input:checked ~ .rating-star {
-        background-position: 0 0;
-      }
-
-      .rating-star,
-      .rating:hover .rating-star {
+      .rating {
+        overflow: hidden;
+        display: inline-block;
+        font-size: 0;
         position: relative;
-        float: left;
-        display: block;
-        width: 16px;
-        height: 16px;
-        margin-top: 32px;
-        background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 -16px;
+
+        .rating-input {
+          float: right;
+          width: 16px;
+          height: 16px;
+          padding: 0;
+          margin: 0 0 0 -16px;
+          opacity: 0;
+        }
+
+        .rating:hover .rating-star:hover,
+        .rating:hover .rating-star:hover ~ .rating-star,
+        .rating-input:checked ~ .rating-star {
+          background-position: 0 0;
+        }
+
+        .rating-star,
+        .rating:hover .rating-star {
+          position: relative;
+          float: left;
+          display: block;
+          width: 16px;
+          height: 16px;
+          margin-top: 32px;
+          background: url('http://kubyshkin.ru/samples/star-rating/star.png') 0 -16px;
+        }
       }
     }
 

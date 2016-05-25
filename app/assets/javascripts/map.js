@@ -5,11 +5,10 @@ var geocoder;
 
 
 $(function() {
+  // javascript for expander
   $('.expander-trigger').click(function(){
     $(this).toggleClass("expander-hidden");
   });
-  // javascript for expander
-
 
   if (navigator === undefined) {
     initializeMap(-34.1, 150.6);
@@ -77,6 +76,7 @@ $(function() {
      $(".sub-score").empty();
      $("#interior-size").empty();
      $("#lot-size").empty();
+     $("#noise-score").html(20);
 
        // need address variable each time for the click function to work
        geocoder.geocode({'address': address }, function(results,status) {
@@ -110,9 +110,10 @@ $(function() {
             if ($(this).is(':checked')) {
               // get current marker position
               geocoder.geocode({"location": marker.position}, function(response) {
-                response[0].formatted_address;
+                var formattedAddress = response[0].formatted_address;
+                console.log(formattedAddress);
                 // ajax request to my server to save address into database
-                $.post("/map", {zillow_id: zpid});
+                $.post("/map", {zillow_id: zpid, address: formattedAddress});
               });
             } else {
               geocoder.geocode({"location": marker.position}, function(response) {

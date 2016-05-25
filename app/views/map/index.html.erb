@@ -10,13 +10,6 @@
   <div id="map">
   </div>
   <div id = "right-panel">
-    <% if session[:user_id] %>
-      <form id="rating" method="POST" action="/map" class="rating">
-        <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
-        <input type="checkbox" class="rating-input" id="rating-input-1-1" name="rating-input-1"/> <!-- checked="true" -->
-        <label for="rating-input-1-1" class="rating-star"></label>
-      </form>
-    <% end %>
     <h1>PetPointer Score for: <span id="mainaddress"></span></h1>
     <div id="petpointlogo">
       <section>
@@ -27,9 +20,18 @@
           <div class="logo-div" id="logo-div">
             <!-- <%= image_tag "petlogo.png" %> -->
           </div>
-
         </article>
       </section>
+    </div>
+    <div id="rating-container">
+      <% if session[:user_id] %>
+        <form id="rating" method="POST" action="/map" class="rating">
+          <input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>" />
+          <input type="checkbox" class="rating-input" id="rating-input-1-1" name="rating-input-1"/> <!-- checked="true" -->
+          <label for="rating-input-1-1" class="rating-star"></label>
+        </form>
+        <span>Add to my Favorites</span>
+      <% end %>
     </div>
 
     <div class="search-results-list" id="search-results-list">
@@ -126,16 +128,15 @@
             <a href="javascript:void(0)" class="expander-trigger expander-hidden">Noise</a>
             <div class="expander-content">
               <ul>
-                <li>Grocery</li>
-                <li>Grocery</li>
-                <li>Grocery</li>
+                <li>Feature in Development</li>
+                <li>All addresses receive 20/20</li>
               </ul>
             </div>
           </div>
         </aside>
         <article>
           <div class="score-container">
-            <span class="sub-score" id="noise-score">-</span>
+            <span class="sub-score" id="noise-score">20</span>
             <span>/20</span>
           </div>
         </article>

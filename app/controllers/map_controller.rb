@@ -6,8 +6,9 @@ class MapController < ApplicationController
 
   def favorite
     @favorite = Favorite.new
-    @favorite.user_id = set_current_user.id
+    @favorite.user_id   = set_current_user.id
     @favorite.zillow_id = params[:zillow_id]
+    @favorite.address   = params[:address]
     @favorite.save
     render nothing: true, :status => "success"
   end
@@ -17,7 +18,5 @@ class MapController < ApplicationController
     @favorite.destroy
     render nothing: true, :status => "not found"
   end
-
-  
 
 end

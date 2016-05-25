@@ -13,11 +13,9 @@ Rails.application.routes.draw do
   post "/map"                  , to: "map#favorite"
   delete "/map"                , to: "map#delete_favorite"
 
-
   get "/favorites"             , to: "favorites#checked"
 
   get  "/yelp"                 , to: "yelp#yelp"
 
   get "/zillow"                , to: "zillow#zillow"
-
 end

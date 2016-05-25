@@ -111,7 +111,6 @@ $(function() {
               // get current marker position
               geocoder.geocode({"location": marker.position}, function(response) {
                 var formattedAddress = response[0].formatted_address;
-                console.log(formattedAddress);
                 // ajax request to my server to save address into database
                 $.post("/map", {zillow_id: zpid, address: formattedAddress});
               });
